@@ -1,8 +1,3 @@
-'use strict';
-
-/**
- * copyright 2024 zeeshanahme-d
- */
 
 /**
  * add event on element
