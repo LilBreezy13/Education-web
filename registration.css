@@ -2,6 +2,7 @@ body{
 	margin: 0;
 	padding: 0;
     font-family: sans-serif;
+    background-color: #fff
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
@@ -10,164 +11,8 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
-
-.responsive-bar{
-    display: none;
-}
-nav{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100px;
-    padding: 10px 100px;
-    box-sizing: border-box;
-    transition: .5s;
-}
-nav.black{
-    /* background: rgba(0,0,0,0.8); */
-    background: #003C96;
-    height: 80px;
-    padding: 10px 50px;
-}
-nav .logo{
-    float: left;
-}
-nav .logo img{
-    height: 80px;
-    transition: .5s;
-    
-    
-}
-nav.black .logo img{
-    height: 60px;
-}
-nav > ul{
-    width: 80%;
-    margin: 0 auto;
-    padding: 0;
-    float: right;
-}
-nav > ul > li{
-    list-style: none;
-    display: inline-block;
-}
-nav > ul > li > a:hover{
-    background: #f00;
-    color: #fff;
-}
-nav > ul > li > a{
-    color: #262626;
-    /* color: #003C96; */
-    text-decoration: none;
-    text-transform: uppercase; /*for capitalisation of letters */
-    line-height: 80px;
-    padding: 5px 20px;
-    transition: .5s;   
-}
-nav.black > ul > li > a{
-    color: #fff;
-    line-height: 60px;
-}
-
-section.sec1{
-    width: 100%;
-    height: 100vh;
-    background: url(https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-    /* background: url(./Assets/students3.7a5de646f3c6bbe2b942.jpg); */
-    background-size: cover;
-}
-section.content{
-    margin: 0;
-    padding: 0;
-    font-size: 1.1em;
-}
-section.sec2{
-    width: 100%;
-    height: 100vh;
-    background: url(https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-    background-size: cover;
-}
-@media(max-width:768px){
-    .responsive-bar{
-        display: block;
-        width: 100%;
-        height: 60px;
-        background: #003C96;
-        /* background: #003C96; */
-        position: fixed;
-        top: 0;
-        left: 0;
-        padding: 5px 20px;
-        box-sizing: border-box;
-        z-index: 1;
-    }
-    .responsive-bar .logo img{
-        float: left;
-        height: 50px;  
-    }
-    .responsive-bar .menu h4{
-        float: left;
-        color: #fff;
-        margin: 0;
-        padding: 0;
-        line-height: 50px;
-        cursor: pointer;
-        text-transform: uppercase;
-    }
-    nav{
-        padding: 0;
-    }
-    nav,
-    nav.black{
-    /* background: #262626; */
-    background: #003C96;
-    height: 60px;
-    padding: 0;
-    }
-    nav .logo{
-        display: none;
-    }
-    nav ul{
-        position: absolute;
-        width: 100%;
-        top: 60px;
-        left: 0;
-        background: #003C96;
-        float: none;
-        display: none;
-    }
-    nav ul.active{
-        display: block;
-    }
-    nav ul li{
-        width: 100%;
-    }
-    nav ul li a{
-        display: block;
-        padding: 0;
-        width: 100%;
-        text-align: center;
-        line-height: 30px !important;
-        color: #fff;
-        
-    }
-
-    nav > ul{
-        width: 100%;
-        display: none;
-    }
-    nav > ul > li{
-        display: block;
-        text-align: center;
-    }
-    .active{
-        display: block;
-    }
-}
-
-
 
 
 
@@ -186,21 +31,21 @@ section.sec2{
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   text-decoration: none;
-}
+} */
 
-body{
+/* body{
   background-color: #282A36;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 8%;
-}
+} */
 
 .card{
     width: auto;
@@ -247,7 +92,7 @@ body{
 .login_register a.login{
   border-radius: 15px;
   background-color: transparent;
-  color: black;
+  /* color: black; */
 }
 
 .login_register a.register{
@@ -264,6 +109,7 @@ body{
 
 .form input{
   padding: 10px;
+  padding-top: 10%;
   border-radius: 5px;
   border: 1px solid #003C96;
   color: #003C96;
