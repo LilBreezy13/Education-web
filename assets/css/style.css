@@ -42,7 +42,8 @@
    * gradient color
    */
 
-  --gradient: linear-gradient(-90deg,hsl(151, 58%, 46%) 0%,hsl(170, 75%, 41%) 100%);
+  /* --gradient: linear-gradient(-90deg,hsl(151, 58%, 46%) 0%,hsl(170, 75%, 41%) 100%); */
+  --gradient: linear-gradient(-90deg,hsl(227, 82%, 44%) 0%,hsl(170, 75%, 41%) 100%);
 
   /**
    * typography
@@ -218,11 +219,13 @@ body {
 
 .section-title .span {
   display: inline-block;
-  color: var(--color);
+  /* color: var(--color); */
+  color:  #000aba;
 }
 
 .btn {
-  background-color: var(--kappel);
+  /* background-color: var(--kappel); */
+  background-color:  #000aba;
   color: var(--white);
   font-family: var(--ff-league_spartan);
   font-size: var(--fs-4);
@@ -933,7 +936,8 @@ body {
   position: fixed;
   bottom: 40px;
   right: 30px;
-  background-color: var(--kappel);
+  background-color:  #000aba;;
+  /* background-color: var(--kappel); */
   color: var(--white);
   font-size: 20px;
   padding: 15px;
@@ -962,14 +966,14 @@ body {
  * responsive for large than 575px screen
  */
 
-@media (min-width: 575px) {
+@media (min-width: 768px) {
 
   /**
    * REUSED STYLE
    */
 
   .container {
-    max-width: 520px;
+    max-width: 768px;
     width: 100%;
     margin-inline: auto;
   }
@@ -1064,7 +1068,7 @@ body {
    * REUSED STYLE
    */
 
-  .container { max-width: 720px; }
+  .container { max-width: 768px; }
 
   .btn { padding: 15px 30px; }
 
@@ -1154,12 +1158,25 @@ body {
 
 
 
+.icon-wrapper {
+  background-color: #000aba;
+  position: relative;
+  margin: auto;
+  font-size: 30px;
+  height: 2.5em;
+  width: 2.5em;
+  color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: 0.5s;
+}
 
 /**
  * responsive for large than 992px screen
  */
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 
   /**
    * CUSTOM PROPERTY
