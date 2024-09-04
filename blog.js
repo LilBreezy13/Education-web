@@ -1,4 +1,4 @@
-const API_KEY = "dc3ffa91c620416bb62c6bfe37dc6363";
+const API_KEY = "0ea2bdb2e0714ed0a010339f866ae4b0";
 const url = "https://newsapi.org/v2/everything?";
 
 window.addEventListener("load", () => fetchNews("Ghana Education OR Pulse Ghana OR 3news"));
