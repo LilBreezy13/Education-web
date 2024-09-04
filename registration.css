@@ -22,7 +22,7 @@ body {
     justify-content: center;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); */
     box-sizing: border-box;
 }
 
@@ -36,12 +36,14 @@ body {
     padding: 12px;
     margin-bottom: 20px;
     border-radius: 5px;
-    border: 1px solid #960000;
-    color: #000204;
+    border: 1px solid #003C96;
+    color: #003C96;
     width: 100%;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    box-shadow: 1px 5px 9px rgba(211, 211, 211, 0.7);
+    font-size: 80%;
+    font-weight: bold;
+    /* box-shadow: 1px 5px 9px rgba(198, 8, 8, 0.7); */
     background-color: white;
 }
 
@@ -54,12 +56,13 @@ body {
     color: white;
     border-radius: 15px;
     border: none;
-    background: linear-gradient(-90deg, #e80303, #ee0404);
+    background: linear-gradient(-90deg, #d31005, #d31005);
     padding: 12px;
     margin-top: 15px;
     width: 100%;
-    box-shadow: 1px 5px 9px rgba(211, 211, 211, 0.9);
+    /* box-shadow: 1px 5px 9px rgba(211, 211, 211, 0.9); */
     cursor: pointer;
+    font-weight: bold;
 }
 
 .registration-form {
