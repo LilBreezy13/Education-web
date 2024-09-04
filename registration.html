@@ -1,412 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1, user-scalable=no"
-    />
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./registration.css" />
-    <link rel="stylesheet" href="./Css/bootstrap.min.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Css/bootstrap.min.css">
+    <link rel="stylesheet" href="./registration.css">
     <title>Best Brain</title>
-    <link rel="icon" type="image/x-icon" href="./Assets/favicon.ico" />
-    <!-- <script type="text/javascript">
-        $(window).on('scroll',function(){
-            if($(window).scrollTop()){
-                $('nav').addClass('black');
-            }
-            else{
-                $('nav').removeClass('black');
-            }
-        })
-    /*menu button onclick function*/         $(document).ready(function(){
-                $('.menu h4').click(function(){
-                    $("nav ul").toggleClass("active")
-            })
-            })
-        </script> -->
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+    <link rel="icon" type="image/x-icon" href="./Assets/favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+</head>
 
-  
-  
- 
-  <body>
-  
-  
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <!-- ////////////////////////////////// -->
-  
+<body>
+
     <!-- FORMULAIRE DE CONNEXION -->
     <div class="card">
-      <h2>Add Your School</h2>
-  
-      <!-- SE CONNECTER / S'INSCRIRE -->
-      <div class="login_register">
-        <!-- <a
-          href="
-      
-      "
-          class="login"
-          target="blank"
-          >Add</a
-        > -->
-        <!-- <a
-          href="
-  
-      "
-          class="register"
-          target="blank"
-          >School</a
-        > -->
-      </div>
-  
-     
-  
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="School Name"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-        />
+        <h2>Add Your School</h2>
+
+        <!-- FORM FIELDS -->
+        <div class="form">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="School Name" aria-label="School Name">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Contact" aria-label="Contact">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Location" aria-label="Location">
+            </div>
+
+            <div class="input-group mb-4">
+                <select id="registrationType" onchange="showForm()" class="form-control">
+                    <option value="">Exam Types</option>
+                    <option value="mock">Mock Registration</option>
+                    <option value="terminal">Terminal Registration</option>
+                </select>
+            </div>
+
+            <!-- STUDENT FORM -->
+            <div id="studentForm" class="registration-form">
+                <div class="input-group mb-3">
+                    <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Enter your Enrollment" aria-label="Enrollment">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Ghanaian Language" aria-label="Ghanaian Language">
+                </div>
+                <div>
+                    <input type="checkbox" id="offerFrench" name="offerFrench" value="Yes">
+                    <label for="offerFrench"> We offer French</label><br>
+                </div>
+            </div>
+
+            <!-- TEACHER FORM -->
+            <div id="teacherForm" class="registration-form">
+                <!-- Repeat the structure of the input fields for each class -->
+                <div class="input-group mb-3">
+                    <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Nursery" aria-label="Nursery Enrollment">
+                </div>
+
+
+                <div class="input-group mb-3">
+                  <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Kg One" aria-label="Nursery Enrollment">
+              </div>
+                
+                <div class="input-group mb-3">
+                    <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Kg Two" aria-label="Kg One Enrollment">
+                </div>
+                <!-- Repeat for each basic class from Basic 1 to Basic 9 -->
+                <div class="input-group mb-3">
+                    <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic One" aria-label="Basic 9 Enrollment">
+                </div>
+
+                <div class="input-group mb-3">
+                  <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Two" aria-label="Nursery Enrollment">
+              </div>
+
+              <div class="input-group mb-3">
+                <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Three" aria-label="Nursery Enrollment">
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Four" aria-label="Nursery Enrollment">
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Five" aria-label="Nursery Enrollment">
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Six" aria-label="Nursery Enrollment">
       </div>
 
-    </br>
-  
       <div class="input-group mb-3">
-        <!-- <input type="tel" pattern="[0-9]*" /> -->
-        <input
-          type="tel"
-          pattern="[0-9]"
-          class="form-control"
-          placeholder="Contact"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-        />
-      </div>
-    </br>
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Location"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-        />
-      </div>
-  
-    </br>
-      <div class="input-group mb-4">
-       
-        <select id="registrationType" onchange="showForm()">
-          <option value="">Exam Types</option>
-          <option value="student">Mock Registration</option>
-          <option value="teacher">Terminal Registration</option>
-          
-        </select>
-      </div>
-  
-      <div id="studentForm" class="registration-form">
-  
-       >
-        <div class="input-group mb-4">
-          <form>
-            
-            
-      <div class="input-group mb-3">
-        <!-- <input type="tel" pattern="[0-9]*" /> -->
-        <input
-          type="tel"
-          pattern="[0-9]"
-          class="form-control"
-          placeholder="Enter your Enrollment"
-          aria-label="Enrollment"
-          aria-describedby="button-addon2"
-        />
-      </div>
-  
-            <div class="input-group mb-3">
-  
-  
-              
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Ghanaian Language"
-                aria-label="Ghanaian Language"
-                aria-describedby="button-addon2"
-              />
-            </div>
-            <form action="/action_page.php">
-              <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-              <label for="vehicle1"> We offer French</label><br />
-            </form>
-  
-       
-          </form>
-        </div>
-      </div>
-  
-      <div id="teacherForm" class="registration-form">
-       
-        <form>
-          <div class="input-group mb-3">
-  
-            <div class="input-group mb-3">
-              <br>
-              <!-- <input type="tel" pattern="[0-9]*" /> -->
-              <input
-                type="tel"
-                pattern="[0-9]"
-                class="form-control"
-                placeholder="Nursery"
-                aria-label="Enrollment"
-                aria-describedby="button-addon2"
-              />
-            </div>
-  
-  
-  
-            <!-- //////////////////////2  -->
-            <div class="input-group mb-3">
-              <!-- <input type="tel" pattern="[0-9]*" /> -->
-              <input
-                type="tel"
-                pattern="[0-9]"
-                class="form-control"
-                placeholder="Kg One"
-                aria-label="Enrollment"
-                aria-describedby="button-addon2"
-              />
-            </div>
-  
-            <!-- ////////////////////////// 3 -->
-            <div class="input-group mb-3">
-              <!-- <input type="tel" pattern="[0-9]*" /> -->
-              <input
-                type="tel"
-                pattern="[0-9]"
-                class="form-control"
-                placeholder="Kg Two"
-                aria-label="Enrollment"
-                aria-describedby="button-addon2"
-              />
-            </div>
-  
-            <!-- /////////////////////// 4  -->
-            <div class="input-group mb-3">
-              <!-- <input type="tel" pattern="[0-9]*" /> -->
-              <input
-                type="tel"
-                pattern="[0-9]"
-                class="form-control"
-                placeholder="Basic 1"
-                aria-label="Enrollment"
-                aria-describedby="button-addon2"
-              />
-            </div>
-              
-            <!-- //////////////////////// 5  -->
-            <div class="input-group mb-3">
-              <!-- <input type="tel" pattern="[0-9]*" /> -->
-              <input
-                type="tel"
-                pattern="[0-9]"
-                class="form-control"
-                placeholder="Basic 2"
-                aria-label="Enrollment"
-                aria-describedby="button-addon2"
-              />
-            </div>
-  
-  <!-- //////////////////////////// 6  -->
-  <div class="input-group mb-3">
-    <!-- <input type="tel" pattern="[0-9]*" /> -->
-    <input
-      type="tel"
-      pattern="[0-9]"
-      class="form-control"
-      placeholder="Basic 3"
-      aria-label="Enrollment"
-      aria-describedby="button-addon2"
-    />
-  </div>
-  
-  <!-- /////////////////////////// 7 -->
-  <div class="input-group mb-3">
-    <!-- <input type="tel" pattern="[0-9]*" /> -->
-    <input
-      type="tel"
-      pattern="[0-9]"
-      class="form-control"
-      placeholder="Basic 4"
-      aria-label="Enrollment"
-      aria-describedby="button-addon2"
-    />
-  </div>
-  
-  <!-- /////////////////////////////// 8  -->
-  <div class="input-group mb-3">
-    <!-- <input type="tel" pattern="[0-9]*" /> -->
-    <input
-      type="tel"
-      pattern="[0-9]"
-      class="form-control"
-      placeholder="Basic 5"
-      aria-label="Enrollment"
-      aria-describedby="button-addon2"
-    />
-  </div>
-  
-  <!-- ////////////////////////////// 9  -->
-  <div class="input-group mb-3">
-    <!-- <input type="tel" pattern="[0-9]*" /> -->
-    <input
-      type="tel"
-      pattern="[0-9]"
-      class="form-control"
-      placeholder="Basic 6"
-      aria-label="Enrollment"
-      aria-describedby="button-addon2"
-    />
-  </div>
-  
-  <!-- ////////////////////////////// 10  -->
-  <div class="input-group mb-3">
-    <!-- <input type="tel" pattern="[0-9]*" /> -->
-    <input
-      type="tel"
-      pattern="[0-9]"
-      class="form-control"
-      placeholder="Basic 7"
-      aria-label="Enrollment"
-      aria-describedby="button-addon2"
-    />
-  </div>
-  
-  <!-- /////////////////////////////// 11  -->
-  <div class="input-group mb-3">
-    <!-- <input type="tel" pattern="[0-9]*" /> -->
-    <input
-      type="tel"
-      pattern="[0-9]"
-      class="form-control"
-      placeholder="Basic 8"
-      aria-label="Enrollment"
-      aria-describedby="button-addon2"
-    />
-  </div>
-  
-  
-  <!-- /////////////////////////// 12  -->
-  <div class="input-group mb-3">
-    <!-- <input type="tel" pattern="[0-9]*" /> -->
-    <input
-      type="tel"
-      pattern="[0-9]"
-      class="form-control"
-      placeholder="Basic 9"
-      aria-label="Enrollment"
-      aria-describedby="button-addon2"
-    />
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Ghanaian Language"
-              aria-label="Ghanaian Language"
-              aria-describedby="button-addon2"
-            />
-          </div>
-          <form action="/action_page.php">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> We offer French</label><br />
-          </form>
-  
-          
-        </form>
-      </div>
-  
-      <div id="adminForm" class="registration-form">
-        <h2>Admin Registration</h2>
-        <!-- Admin registration form fields -->
-        <form>
-          <label for="adminName">Name:</label>
-          <input type="text" id="adminName" name="adminName" /><br /><br />
-          <label for="adminEmail">Email:</label>
-          <input type="email" id="adminEmail" name="adminEmail" /><br /><br />
-          <input type="submit" value="Register" />
-        </form>
-      </div>
-  
-      <br />
-  
-    
-      <br />
-      <br />
-      <br />
-  
-      <!-- BOUTTON LOGIN -->
-      <button type="submit" class="login_btn">Register</button>
+        <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Seven" aria-label="Nursery Enrollment">
     </div>
-  
-- <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button> -->
-  
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-  
-    
+
+    <div class="input-group mb-3">
+      <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Eight" aria-label="Nursery Enrollment">
+  </div>
+
+
+  <div class="input-group mb-3">
+    <input type="tel" pattern="[0-9]*" class="form-control" placeholder="Basic Nine" aria-label="Nursery Enrollment">
+</div>
+                <div>
+                    <input type="checkbox" id="offerFrench" name="offerFrench" value="Yes">
+                    <label for="offerFrench"> We offer French</label><br>
+                </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" class="login_btn">Register</button>
+        </div>
+    </div>
+
+    <!-- External JS -->
     <script src="./registration.js"></script>
-    <!-- <script src="./Js/bootstrap.min.js"></script> -->
-  </body>
-  
+
+</body>
+</html>

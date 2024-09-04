@@ -1,10 +1,19 @@
-const API_KEY = "0ea2bdb2e0714ed0a010339f866ae4b0";
-const url = "https://newsapi.org/v2/everything?q=";
+const API_KEY = "dc3ffa91c620416bb62c6bfe37dc6363";
+const url = "https://newsapi.org/v2/everything?";
 
-window.addEventListener("load", () => fetchNews("Technology"));
+window.addEventListener("load", () => fetchNews("Ghana Education OR Pulse Ghana OR 3news"));
 
 async function fetchNews(query) {
-    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+    const queryParams = new URLSearchParams({
+        q: query,
+        domains: '3news.com,pulse.com.gh',  // Restrict search to specific domains
+        apiKey: API_KEY,
+        language: 'en',
+        sortBy: 'publishedAt',  // Fetch the most recent articles
+        pageSize: 30,  // Limit to 20 articles
+    });
+
+    const res = await fetch(`${url}${queryParams}`);
     const data = await res.json();
     bindData(data.articles);
 }
@@ -15,13 +24,14 @@ function bindData(articles) {
 
     cardsContainer.innerHTML = "";
 
-    articles.forEach((article) => {
+    // Display up to 20 articles
+    articles.slice(0, 40).forEach((article) => {
         if (!article.urlToImage) return;
 
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article);
         cardsContainer.appendChild(cardClone);
-    })
+    });
 }
 
 function fillDataInCard(cardClone, article) {
@@ -34,13 +44,13 @@ function fillDataInCard(cardClone, article) {
     newsTitle.innerHTML = `${article.title.slice(0, 60)}...`;
     newsDesc.innerHTML = `${article.description.slice(0, 150)}...`;
 
-    const date = new Date(article.publishedAt).toLocaleString("en-US", { timeZone: "Asia/Jakarta" })
+    const date = new Date(article.publishedAt).toLocaleString("en-US", { timeZone: "Africa/Accra" });
 
     newsSource.innerHTML = `${article.source.name} · ${date}`;
 
     cardClone.firstElementChild.addEventListener("click", () => {
         window.open(article.url, "_blank");
-    })
+    });
 }
 
 let curSelectedNav = null;
@@ -61,4 +71,4 @@ searchButton.addEventListener("click", () => {
     fetchNews(query);
     curSelectedNav?.classList.remove("active");
     curSelectedNav = null;
-})
+});
