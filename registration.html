@@ -76,6 +76,19 @@
             display: none;
         }
 
+        .class-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .class-inputs input {
+            padding: 10px;
+            margin-bottom: 5px;
+            font-size: 80%;
+            font-weight: normal;
+        }
+
         @media only screen and (max-width: 768px) {
             .card {
                 padding: 30px;
@@ -178,14 +191,22 @@
                 </select>
             </div>
 
-            <!-- Mock Candidates Input -->
-            <div class="input-group mb-3" id="mockCandidates" style="display:none;">
-                <input type="number" id="mockCandidatesInput" class="form-control" placeholder="Enter number of candidates for Mock" min="1">
-            </div>
-
             <!-- Terminal Candidates Input -->
-            <div class="input-group mb-3" id="terminalCandidates" style="display:none;">
-                <input type="number" id="terminalCandidatesInput" class="form-control" placeholder="Enter number of candidates for Terminal Registration" min="1">
+            <div id="terminalCandidates" style="display:none;">
+                <div class="class-inputs">
+                    <input type="number" id="nursery" class="form-control" placeholder="Nursery" min="0">
+                    <input type="number" id="kg1" class="form-control" placeholder="KG 1" min="0">
+                    <input type="number" id="kg2" class="form-control" placeholder="KG 2" min="0">
+                    <input type="number" id="basic1" class="form-control" placeholder="Basic 1" min="0">
+                    <input type="number" id="basic2" class="form-control" placeholder="Basic 2" min="0">
+                    <input type="number" id="basic3" class="form-control" placeholder="Basic 3" min="0">
+                    <input type="number" id="basic4" class="form-control" placeholder="Basic 4" min="0">
+                    <input type="number" id="basic5" class="form-control" placeholder="Basic 5" min="0">
+                    <input type="number" id="basic6" class="form-control" placeholder="Basic 6" min="0">
+                    <input type="number" id="basic7" class="form-control" placeholder="Basic 7" min="0">
+                    <input type="number" id="basic8" class="form-control" placeholder="Basic 8" min="0">
+                    <input type="number" id="basic9" class="form-control" placeholder="Basic 9" min="0">
+                </div>
             </div>
 
             <div id="summarySection" class="registration-form" style="display:none;">
@@ -202,18 +223,14 @@
     <script>
         function showForm() {
             const registrationType = document.getElementById("registrationType").value;
-            const mockCandidatesInput = document.getElementById("mockCandidates");
-            const terminalCandidatesInput = document.getElementById("terminalCandidates");
-        
+            const terminalCandidates = document.getElementById("terminalCandidates");
+
             if (registrationType === "mock") {
-                mockCandidatesInput.style.display = "block";
-                terminalCandidatesInput.style.display = "none";
+                terminalCandidates.style.display = "none";
             } else if (registrationType === "terminal") {
-                mockCandidatesInput.style.display = "none";
-                terminalCandidatesInput.style.display = "block";
+                terminalCandidates.style.display = "block";
             } else {
-                mockCandidatesInput.style.display = "none";
-                terminalCandidatesInput.style.display = "none";
+                terminalCandidates.style.display = "none";
             }
         }
         
@@ -225,33 +242,66 @@
             const registrationType = document.getElementById("registrationType").value;
             const frenchOption = document.getElementById("frenchOption").value;
         
-            // Get number of candidates based on registration type
-            const mockCandidates = parseInt(document.getElementById("mockCandidatesInput").value) || 0;
-            const terminalCandidates = parseInt(document.getElementById("terminalCandidatesInput").value) || 0;
-        
-            let candidates = 0;
-        
-            if (registrationType === "mock") {
-                candidates = mockCandidates;
-            } else if (registrationType === "terminal") {
-                candidates = terminalCandidates;
-            }
-        
-            const pricePerCandidate = 20;
+            // Get number of candidates based on class levels
+            const nursery = parseInt(document.getElementById("nursery").value) || 0;
+            const kg1 = parseInt(document.getElementById("kg1").value) || 0;
+            const kg2 = parseInt(document.getElementById("kg2").value) || 0;
+            const basic1 = parseInt(document.getElementById("basic1").value) || 0;
+            const basic2 = parseInt(document.getElementById("basic2").value) || 0;
+            const basic3 = parseInt(document.getElementById("basic3").value) || 0;
+            const basic4 = parseInt(document.getElementById("basic4").value) || 0;
+            const basic5 = parseInt(document.getElementById("basic5").value) || 0;
+            const basic6 = parseInt(document.getElementById("basic6").value) || 0;
+            const basic7 = parseInt(document.getElementById("basic7").value) || 0;
+            const basic8 = parseInt(document.getElementById("basic8").value) || 0;
+            const basic9 = parseInt(document.getElementById("basic9").value) || 0;
+
+            // Pricing
+            const preschoolPrice = 8;
+            const lowerPrimaryPrice = 9;
+            const upperPrimaryPrice = 10;
+            const basic7_8Price = 15;
+            const basic9Price = 20;
             const deliveryFee = 20;
-            const totalBill = (candidates * pricePerCandidate) + deliveryFee;
-        
-            const frenchText = frenchOption === "yes" ? " (with French)" : "";
+
+            // Calculate totals
+            const preschoolTotal = (nursery + kg1 + kg2) * preschoolPrice;
+            const lowerPrimaryTotal = (basic1 + basic2 + basic3) * lowerPrimaryPrice;
+            const upperPrimaryTotal = (basic4 + basic5 + basic6) * upperPrimaryPrice;
+            const basic7_8Total = (basic7 + basic8) * basic7_8Price;
+            const basic9Total = basic9 * basic9Price;
+            const overallTotal = preschoolTotal + lowerPrimaryTotal + upperPrimaryTotal + basic7_8Total + basic9Total + deliveryFee;
+
+            const frenchText = frenchOption === "yes" ? " (French)" : "";
             const summaryText = `
                 School Name: ${schoolName}<br>
                 Location: ${location}<br>
                 Contact: ${contact}<br>
-                Exam Type: ${registrationType === "mock" ? "Mock" : "Terminal"}${frenchText}<br>
+                Exam Type: Terminal${frenchText}<br>
                 Language: ${language}<br>
-                Number of Candidates: ${candidates}<br>
-                Price per Candidate: ${pricePerCandidate} GHS<br>
-                Delivery Fee: ${deliveryFee} GHS<br>
-                Total: ${totalBill} GHS
+                <br>
+                <strong>Pre School:</strong><br>
+                Total Enrollment: ${nursery + kg1 + kg2}<br>
+                Price: ${preschoolTotal} GHS<br>
+                <br>
+                <strong>Lower Primary:</strong><br>
+                Total Enrollment: ${basic1 + basic2 + basic3}<br>
+                Price: ${lowerPrimaryTotal} GHS<br>
+                <br>
+                <strong>Upper Primary:</strong><br>
+                Total Enrollment: ${basic4 + basic5 + basic6}<br>
+                Price: ${upperPrimaryTotal} GHS<br>
+                <br>
+                <strong>Basic 7 & 8:</strong><br>
+                Total Enrollment: ${basic7 + basic8}<br>
+                Price: ${basic7_8Total} GHS<br>
+                <br>
+                <strong>Basic 9:</strong><br>
+                Total Enrollment: ${basic9}<br>
+                Price: ${basic9Total} GHS<br>
+                <br>
+                <strong>Delivery Fee:</strong> ${deliveryFee} GHS<br>
+                <strong>Overall Total:</strong> ${overallTotal} GHS
             `;
         
             document.getElementById("summaryText").innerHTML = summaryText;
@@ -264,10 +314,6 @@
             const language = document.getElementById("language").value;
             const registrationType = document.getElementById("registrationType").value;
             const frenchOption = document.getElementById("frenchOption").value;
-        
-            // Get number of candidates based on registration type
-            const mockCandidates = parseInt(document.getElementById("mockCandidatesInput").value) || 0;
-            const terminalCandidates = parseInt(document.getElementById("terminalCandidatesInput").value) || 0;
         
             // Validate inputs
             const allowedLanguages = [
@@ -282,19 +328,6 @@
         
             if (!schoolName || !contact || !location) {
                 alert("Please fill in all required fields.");
-                return;
-            }
-        
-            let candidates = 0;
-        
-            if (registrationType === "mock") {
-                candidates = mockCandidates;
-            } else if (registrationType === "terminal") {
-                candidates = terminalCandidates;
-            }
-        
-            if (candidates <= 0) {
-                alert("Please enter a valid number of candidates.");
                 return;
             }
         
@@ -314,8 +347,18 @@
             document.getElementById("language").value = "";
             document.getElementById("registrationType").value = "";
             document.getElementById("frenchOption").value = "no";
-            document.getElementById("mockCandidatesInput").value = "";
-            document.getElementById("terminalCandidatesInput").value = "";
+            document.getElementById("nursery").value = "";
+            document.getElementById("kg1").value = "";
+            document.getElementById("kg2").value = "";
+            document.getElementById("basic1").value = "";
+            document.getElementById("basic2").value = "";
+            document.getElementById("basic3").value = "";
+            document.getElementById("basic4").value = "";
+            document.getElementById("basic5").value = "";
+            document.getElementById("basic6").value = "";
+            document.getElementById("basic7").value = "";
+            document.getElementById("basic8").value = "";
+            document.getElementById("basic9").value = "";
             document.getElementById("summarySection").style.display = "none";
             showForm();
         }
