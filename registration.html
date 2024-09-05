@@ -180,12 +180,12 @@
 
             <!-- Mock Candidates Input -->
             <div class="input-group mb-3" id="mockCandidates" style="display:none;">
-                <input type="number" class="form-control" placeholder="Enter number of candidates for Mock" min="1">
+                <input type="number" id="mockCandidatesInput" class="form-control" placeholder="Enter number of candidates for Mock" min="1">
             </div>
 
             <!-- Terminal Candidates Input -->
             <div class="input-group mb-3" id="terminalCandidates" style="display:none;">
-                <input type="number" class="form-control" placeholder="Enter number of candidates for Terminal Registration" min="1">
+                <input type="number" id="terminalCandidatesInput" class="form-control" placeholder="Enter number of candidates for Terminal Registration" min="1">
             </div>
 
             <div id="summarySection" class="registration-form" style="display:none;">
@@ -226,8 +226,8 @@
             const frenchOption = document.getElementById("frenchOption").value;
         
             // Get number of candidates based on registration type
-            const mockCandidates = parseInt(document.querySelector("#mockCandidates input").value) || 0;
-            const terminalCandidates = parseInt(document.querySelector("#terminalCandidates input").value) || 0;
+            const mockCandidates = parseInt(document.getElementById("mockCandidatesInput").value) || 0;
+            const terminalCandidates = parseInt(document.getElementById("terminalCandidatesInput").value) || 0;
         
             let candidates = 0;
         
@@ -266,8 +266,8 @@
             const frenchOption = document.getElementById("frenchOption").value;
         
             // Get number of candidates based on registration type
-            const mockCandidates = parseInt(document.querySelector("#mockCandidates input").value) || 0;
-            const terminalCandidates = parseInt(document.querySelector("#terminalCandidates input").value) || 0;
+            const mockCandidates = parseInt(document.getElementById("mockCandidatesInput").value) || 0;
+            const terminalCandidates = parseInt(document.getElementById("terminalCandidatesInput").value) || 0;
         
             // Validate inputs
             const allowedLanguages = [
@@ -314,8 +314,8 @@
             document.getElementById("language").value = "";
             document.getElementById("registrationType").value = "";
             document.getElementById("frenchOption").value = "no";
-            document.querySelector("#mockCandidates input").value = "";
-            document.querySelector("#terminalCandidates input").value = "";
+            document.getElementById("mockCandidatesInput").value = "";
+            document.getElementById("terminalCandidatesInput").value = "";
             document.getElementById("summarySection").style.display = "none";
             showForm();
         }
