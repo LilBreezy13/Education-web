@@ -1,15 +1,18 @@
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: #f0f4f8;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .container {
     display: flex;
     height: 100vh;
     flex-direction: row;
+    overflow: hidden; /* Prevent overflow */
 }
 
 .sidebar {
@@ -21,6 +24,7 @@ body {
     position: sticky;
     top: 0;
     height: 100vh;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .sidebar ul {
@@ -79,6 +83,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    table-layout: fixed; /* Prevent table from expanding */
 }
 
 table, th, td {
@@ -88,6 +93,8 @@ table, th, td {
 th, td {
     padding: 12px;
     text-align: left;
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis; /* Add ellipsis if content is too long */
 }
 
 th {
@@ -144,6 +151,11 @@ form button:hover {
 
     .content {
         width: 100%;
+        padding: 10px; /* Adjust padding */
+    }
+
+    table {
+        font-size: 14px; /* Adjust table font size */
     }
 }
 
