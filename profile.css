@@ -83,7 +83,6 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    table-layout: fixed; /* Prevent table from expanding */
 }
 
 table, th, td {
@@ -156,6 +155,7 @@ form button:hover {
 
     table {
         font-size: 14px; /* Adjust table font size */
+        table-layout: auto; /* Allow table to adjust based on content */
     }
 }
 
@@ -190,5 +190,18 @@ form button:hover {
 
     form button {
         font-size: 14px;
+    }
+}
+
+/* Orders Tab Layout */
+.orders-tab {
+    display: flex;
+    flex-direction: row; /* Horizontal layout by default */
+    flex-wrap: wrap; /* Wrap content if needed */
+}
+
+@media (max-width: 768px) {
+    .orders-tab {
+        flex-direction: column; /* Vertical layout on mobile screens */
     }
 }
