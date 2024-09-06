@@ -1408,3 +1408,55 @@ body {
 .fa-user-alt{
   color: #000aba !important;
 }
+
+
+
+
+
+
+
+
+
+
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-banner img {
+  width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-meta-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  color: #666;
+  font-size: 0.95rem;
+}
