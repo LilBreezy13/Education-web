@@ -113,8 +113,8 @@
     padding:15px 0;
     font-size:1em;
     text-transform:capitalize;
-    color:#003c96;
-    background:#fff;
+    color:#fff;
+    background:rgba(213, 6, 6, 0.841);
     border-radius:5px;
     cursor:pointer;
   }
