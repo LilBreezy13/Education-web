@@ -146,9 +146,9 @@
             </div>
 
             <div class="input-group mb-3">
-                <input type="tel" id="contact" class="form-control" placeholder="Contact">
+                <input type="tel" id="contact" class="form-control" placeholder="Contact" maxlength="10" pattern="\d{10}" required oninput="validateContact()">
             </div>
-
+            
             <div class="input-group mb-3">
                 <input type="text" id="location" class="form-control" placeholder="Location">
             </div>
@@ -308,6 +308,7 @@
                 Upper Primary: <strong>${upperPrimaryTotal} GHS</strong><br>
                 Basic 7&8: <strong>${basic7_8Total} GHS</strong><br>
                 Basic 9: <strong>${basic9Total} GHS</strong><br>
+                </br>
                 Delivery Fee: <strong>${deliveryFee} GHS</strong><br>
                 Overall Total: <strong>${overallTotal} GHS</strong>
             `;
@@ -348,6 +349,17 @@
         updateSummary();
         document.getElementById("summarySection").style.display = "block";
     }
+
+    function validateContact() {
+    const contactInput = document.getElementById('contact');
+    const contactValue = contactInput.value;
+
+    // Check if the length is greater than 10
+    if (contactValue.length > 10) {
+        contactInput.value = contactValue.slice(0, 10); // Trim to 10 digits
+    }
+}
+
     
     function confirmRegistration() {
         alert("You have successfully registered.");
@@ -383,6 +395,8 @@
         el.addEventListener('input', updateSummary);
         el.addEventListener('change', updateSummary);
     });
+
+
     
     </script>
 </body>

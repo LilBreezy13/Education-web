@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Account Page</title>
+    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" data-tab="account"><i class="fas fa-user"></i> My Account</a></li>
+                <li><a href="#" data-tab="orders"><i class="fas fa-clipboard-list"></i> Orders</a></li>
+                <li><a href="#" data-tab="pending-orders"><i class="fas fa-clock"></i> Pending Orders</a></li>
+                <li><a href="#" data-tab="recently-edited"><i class="fas fa-edit"></i> Recently Edited</a></li>
+                <li><a href="#" data-tab="edit-order"><i class="fas fa-pencil-alt"></i> Edit Order</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="account" class="tab-content">
+                <h2>My Account</h2>
+                <p><strong>First Name:</strong> Hunsu</p>
+                <p><strong>Last Name:</strong> Nicholas</p>
+                <p><strong>Email:</strong> nickyjay013@gmail.com</p>
+                <p><strong>Phone Number:</strong> +233 050 996 7235</p>
+            </div>
+            <div id="orders" class="tab-content">
+                <h2>Orders</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Exam</th>
+                            <th>Number of Candidates</th>
+                            <th>Ghanaian Language Options</th>
+                            <th>French Option</th>
+                            <th>Total Bill</th>
+                            <th>Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mock Exam</td>
+                            <td>50</td>
+                            <td>3</td>
+                            <td>Yes</td>
+                            <td>Gh&#8373;500</td>
+                            <td>2024-08-15</td>
+                        </tr>
+                        <!-- More rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="pending-orders" class="tab-content">
+                <h2>Pending Orders</h2>
+                <p>No pending orders at the moment.</p>
+            </div>
+            <div id="recently-edited" class="tab-content">
+                <h2>Recently Edited</h2>
+                <p>No recent edits.</p>
+            </div>
+            <div id="edit-order" class="tab-content">
+                <h2>Edit Order</h2>
+                <form id="edit-order-form">
+                    <label for="num-candidates">Number of Candidates:</label>
+                    <input type="number" id="num-candidates" value="50">
+                    
+                    <label for="ghanaian-language">Ghanaian Language Options:</label>
+                    <input type="number" id="ghanaian-language" value="3">
+                    
+                    <label for="french-option">French Option:</label>
+                    <select id="french-option">
+                        <option value="yes" selected>Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    
+                    <label for="school-name">School Name:</label>
+                    <input type="text" id="school-name" value="ABC School">
+                    
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" value="Accra">
+                    
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" value="+233 987 654 321">
+                    
+                    <button type="button" onclick="updateOrder()">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./profile.js"></script>
+</body>
+</html>
