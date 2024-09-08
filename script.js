@@ -5,7 +5,7 @@ async function fetchLatestNews() {
     const query = 'Ghana Education OR Pulse Ghana OR 3news OR NACA';
     const queryParams = new URLSearchParams({
         q: query,
-        domains: '3news.com,pulse.com.gh',
+        domains: 'moe.gov.gh, 3news.com,pulse.com.gh',
         apiKey: API_KEY,
         language: 'en',
         sortBy: 'publishedAt',  // Sort by the latest news first
@@ -106,3 +106,7 @@ function displayNews(articles) {
 
 // Fetch and display the latest news when the page loads
 window.addEventListener("load", fetchLatestNews);
+
+
+
+

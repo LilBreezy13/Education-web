@@ -1452,11 +1452,24 @@ body {
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 2.25rem;
   margin-bottom: 0.75rem;
 }
 
 .card-text {
   color: #666;
-  font-size: 0.95rem;
+  font-size: 1.0rem;
 }
+
+
+body {
+  overflow-x: hidden; /* This will hide horizontal overflow */
+}
+
+
+.element {
+  margin: 0 auto; /* Centering element with automatic margins */
+  padding: 0;     /* Adjust padding as needed */
+}
+
+

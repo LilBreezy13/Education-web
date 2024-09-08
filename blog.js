@@ -6,7 +6,7 @@ window.addEventListener("load", () => fetchNews("Ghana Education OR Pulse Ghana 
 async function fetchNews(query) {
     const queryParams = new URLSearchParams({
         q: query,
-        domains: '3news.com,pulse.com.gh',  // Restrict search to specific domains
+        domains: 'moe.gov.gh,3news.com,pulse.com.gh',  // Restrict search to specific domains
         apiKey: API_KEY,
         language: 'en',
         sortBy: 'publishedAt',  // Fetch the most recent articles
