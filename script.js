@@ -5,16 +5,16 @@ async function fetchLatestNews() {
     const query = 'Ghana Education OR Pulse Ghana OR 3news OR NACA';
     const queryParams = new URLSearchParams({
         q: query,
-        domains: 'moe.gov.gh, 3news.com,pulse.com.gh',
+        domains: 'https://ges.gov.gh,moe.gov.gh,3news.com,pulse.com.gh', // No spaces after commas
         apiKey: API_KEY,
         language: 'en',
         sortBy: 'publishedAt',  // Sort by the latest news first
-        pageSize: 9,  // Limit to 10 latest news articles
+        pageSize: 9,  // Limit to 9 latest news articles
     });
 
     try {
-        const res = await fetch(`${url}${queryParams}`);
-        const data = await res.json();
+        const response = await fetch(`${url}${queryParams}`);
+        const data = await response.json();
 
         if (data.articles && data.articles.length > 0) {
             displayNews(data.articles);
@@ -32,7 +32,7 @@ function displayNews(articles) {
     // Clear any existing content
     newsContainer.innerHTML = "";
 
-    // Loop through articles and create blog cards dynamically
+    // Loop through articles and create news cards dynamically
     articles.forEach((article) => {
         const articleDate = new Date(article.publishedAt).toLocaleDateString("en-US", {
             year: "numeric",
@@ -43,10 +43,7 @@ function displayNews(articles) {
         const newsCard = `
         <li>
             <div class="blog-card">
-                <figure
-                    class="card-banner img-holder has-after"
-                    style="--width: 370; --height: 370"
-                >
+                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370">
                     <img
                         src="${article.urlToImage || './assets/images/default-news.jpg'}"
                         width="370"
@@ -59,34 +56,23 @@ function displayNews(articles) {
 
                 <div class="card-content">
                     <a href="${article.url}" target="_blank" class="card-btn" aria-label="read more">
-                        <ion-icon
-                          name="arrow-forward-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
+                        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                     </a>
 
                     <a href="${article.url}" target="_blank" class="card-subtitle">Recently</a>
 
                     <h3 class="h3">
-                      <a href="${article.url}" target="_blank" class="card-title">
-                        ${article.title}
-                      </a>
+                        <a href="${article.url}" target="_blank" class="card-title">${article.title}</a>
                     </h3>
 
                     <ul class="card-meta-list">
                         <li class="card-meta-item">
-                            <ion-icon
-                              name="calendar-outline"
-                              aria-hidden="true"
-                            ></ion-icon>
+                            <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
                             <span class="span">${articleDate}</span>
                         </li>
 
                         <li class="card-meta-item">
-                            <ion-icon
-                              name="chatbubbles-outline"
-                              aria-hidden="true"
-                            ></ion-icon>
+                            <ion-icon name="chatbubbles-outline" aria-hidden="true"></ion-icon>
                             <span class="span">Source: ${article.source.name}</span>
                         </li>
                     </ul>
@@ -106,7 +92,3 @@ function displayNews(articles) {
 
 // Fetch and display the latest news when the page loads
 window.addEventListener("load", fetchLatestNews);
-
-
-
-
