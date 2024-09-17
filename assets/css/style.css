@@ -936,7 +936,7 @@ body {
   position: fixed;
   bottom: 40px;
   right: 30px;
-  background-color:  #000aba;;
+  background-color:  #000aba;
   /* background-color: var(--kappel); */
   color: var(--white);
   font-size: 20px;
@@ -1470,4 +1470,27 @@ body {
 .element {
   margin: 0 auto; /* Centering element with automatic margins */
   padding: 0;     /* Adjust padding as needed */
+}
+
+
+
+
+
+
+
+.img-holder {
+  position: relative;
+  width: var(--width, 240px);
+  height: var(--height, 370px);
+  border: 2px solid #ddd;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }

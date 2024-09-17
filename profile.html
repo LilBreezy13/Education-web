@@ -16,6 +16,8 @@
                 <li><a href="#" data-tab="pending-orders"><i class="fas fa-clock"></i> Pending Orders</a></li>
                 <li><a href="#" data-tab="recently-edited"><i class="fas fa-edit"></i> Recently Edited</a></li>
                 <li><a href="#" data-tab="edit-order"><i class="fas fa-pencil-alt"></i> Edit Order</a></li>
+                  <!-- Add Payment History tab -->
+                  <li><a href="#" data-tab="payment-history"><i class="fas fa-credit-card"></i> Payment History</a></li>
             </ul>
         </div>
         <div class="content">
@@ -85,7 +87,39 @@
                     <input type="text" id="contact" value="0509967235">
                     
                     <button type="button" onclick="updateOrder()">Update</button>
+
+
                 </form>
+            </div>
+
+              <!-- Payment History Section -->
+              <div id="payment-history" class="tab-content">
+                <h2>Payment History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PAY12345</td>
+                            <td>2024-08-20</td>
+                            <td>Gh&#8373;500</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>PAY67890</td>
+                            <td>2024-09-10</td>
+                            <td>Gh&#8373;300</td>
+                            <td>Pending</td>
+                        </tr>
+                        <!-- More rows as needed -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
