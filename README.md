@@ -1,3 +1,4 @@
+
 This project is a fork of the [Education-web](https://github.com/zeeshanahme-d/Education-web.git), a simple Education Web site. I extended it to make it a web application and i include new features such as real-time registration of schools and their candidates, blog for real-time news and articles, users profile account, payment options, resources page for downloading scheme of learning and complete developed backend using golang and a redesigned user interface. These changes enhance the security and usability of the original Education Web site.
 
 The original project, [Education-web](https://github.com/zeeshanahme-d/Education-web.git), was created by [Zeeshan Ahmed]. It allowed basic text-based communication between users.
