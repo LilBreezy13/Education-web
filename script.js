@@ -120,3 +120,7 @@ const educationalImages = [
   // Optionally, you can immediately trigger the change on page load
   changeImage();
   
+
+  
+
+  
