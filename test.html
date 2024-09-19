@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .breadcrumb {
+      padding: 10px 15px;
+      background-color: #e9ecef;
+      border-bottom: 1px solid #ccc;
+    }
+    .breadcrumb a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    .breadcrumb span {
+      margin: 0 5px;
+    }
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+    .subject-card {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .card {
+      width: 48%;
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .card:hover {
+      background-color: #0056b3;
+    }
+    .quiz-area {
+      display: none;
+    }
+    .question {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #fafafa;
+    }
+    .question h4 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .options input {
+      margin-right: 10px;
+    }
+    .timer {
+      text-align: right;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #dc3545;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .timer i {
+      margin-right: 5px;
+      color: #dc3545;
+    }
+    .submit-btn, .home-btn {
+      display: block;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .submit-btn:hover, .home-btn:hover {
+      background-color: #218838;
+    }
+    .result {
+      display: none;
+      margin-top: 20px;
+    }
+    .result p {
+      margin-bottom: 10px;
+    }
+    .result .correct {
+      color: #28a745;
+    }
+    .result .incorrect {
+      color: #dc3545;
+    }
+    .result .answer {
+      font-weight: bold;
+    }
+    .well-done {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .well-done h3 {
+      color: #28a745;
+    }
+    @media (max-width: 768px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Breadcrumb navigation -->
+  <div class="breadcrumb">
+    <a href="#">Home</a> <span>&gt;</span> <a href="#">Quiz Portal</a>
+  </div>
+
+  <div class="container">
+    <h2>Select a Subject</h2>
+    <div class="subject-card">
+      <div class="card" onclick="loadQuiz('mathematics')">Mathematics</div>
+      <div class="card" onclick="loadQuiz('science')">Integrated Science</div>
+      <div class="card" onclick="loadQuiz('social')">Social Studies</div>
+      <div class="card" onclick="loadQuiz('english')">English Language</div>
+    </div>
+
+    <!-- Quiz Area -->
+    <div class="quiz-area" id="quiz-area">
+      <div class="timer" id="timer">
+        <i class="icon-clock">&#9200;</i> Time Left: 20:00
+      </div>
+      <form id="quiz-form">
+        <!-- Questions will be dynamically loaded here -->
+      </form>
+      <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
+
+    <!-- Result Area -->
+    <div class="result" id="result-area">
+      <h3>Your Score:</h3>
+      <p id="score"></p>
+      <h4>Corrections:</h4>
+      <div id="corrections"></div>
+      <button class="home-btn" onclick="goHome()">Home</button>
+    </div>
+
+    <!-- Well Done Message -->
+    <div class="well-done" id="well-done">
+      <h3>Congratulations! You answered all questions correctly!</h3>
+      <button class="home-btn" onclick="goHome()">Home</button>
+    </div>
+  </div>
+
+  <script>
+    let timer;
+    let timeRemaining = 1200; // 20 minutes
+    let selectedSubject = '';
+    let questions = {
+      mathematics: [
+        { q: "What is 2 + 2?", options: ["A. 3", "B. 4", "C. 5", "D. 6"], answer: "B", explanation: "B (4 is the sum of 2 and 2)." },
+        { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+        // Add more questions
+      ],
+      science: [
+        { q: "Which of the following substances is not an element?", options: ["A. Aluminum", "B. Ammonia", "C. Oxygen", "D. Sodium"], answer: "B", explanation: "B (Ammonia (NH₃) is a compound made up of nitrogen (N) and hydrogen (H))." },
+        { q: "Which of the following statements about  is the chemical formula of water?", options: ["A. H2", "B. O2", "C. H2O", "D. CO2"], answer: "C", explanation: "C (Water is H2O)." },
+        // Add more questions
+      ],
+      social: [
+        { q: "Who was the first president of the USA?", options: ["A. Abraham Lincoln", "B. George Washington", "C. John Adams", "D. Thomas Jefferson"], answer: "B", explanation: "B (George Washington was the first president of the USA)." },
+        { q: "What year did World War I start?", options: ["A. 1914", "B. 1915", "C. 1916", "D. 1917"], answer: "A", explanation: "A (World War I began in 1914)." },
+        // Add more questions
+      ],
+      english: [
+        { q: "What is the antonym of 'happy'?", options: ["A. Sad", "B. Angry", "C. Excited", "D. Calm"], answer: "A", explanation: "'Sad' is the opposite of 'happy'." },
+        { q: "Choose the correct spelling", options: ["A. Recieve", "B. Receive", "C. Receeve", "D. Receeve"], answer: "B", explanation: "B (The correct spelling is 'receive')." },
+        // Add more questions
+      ]
+    };
+
+    function loadQuiz(subject) {
+      selectedSubject = subject;
+      document.querySelector('.subject-card').style.display = 'none'; // Hide subject selection
+      const quizForm = document.getElementById('quiz-form');
+      quizForm.innerHTML = ''; // Clear previous questions
+      const selectedQuestions = questions[subject].sort(() => 0.5 - Math.random()).slice(0, 20);
+      
+      selectedQuestions.forEach((item, index) => {
+        const questionHTML = `
+          <div class="question">
+            <h4>Q${index + 1}. ${item.q}</h4>
+            <div class="options">
+              <label><input type="radio" name="q${index}" value="A"> ${item.options[0]}</label>
+              <label><input type="radio" name="q${index}" value="B"> ${item.options[1]}</label>
+              <label><input type="radio" name="q${index}" value="C"> ${item.options[2]}</label>
+              <label><input type="radio" name="q${index}" value="D"> ${item.options[3]}</label>
+            </div>
+          </div>
+        `;
+        quizForm.innerHTML += questionHTML;
+      });
+      
+      document.getElementById('quiz-area').style.display = 'block';
+      startTimer();
+    }
+
+    function startTimer() {
+      timeRemaining = 1200; // Reset to 20 minutes
+      clearInterval(timer);
+      timer = setInterval(() => {
+        timeRemaining--;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        document.getElementById('timer').innerHTML = `<i class="icon-clock">&#9200;</i> Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        if (timeRemaining <= 0) {
+          clearInterval(timer);
+          submitQuiz();
+        }
+      }, 1000);
+    }
+
+    function submitQuiz() {
+      clearInterval(timer);
+      const quizForm = document.getElementById('quiz-form');
+      const formData = new FormData(quizForm);
+      let score = 0;
+      let corrections = '';
+      let allCorrect = true;
+
+      const selectedQuestions = questions[selectedSubject].slice(0, 20);
+      selectedQuestions.forEach((item, index) => {
+        const userAnswer = formData.get(`q${index}`);
+        if (userAnswer === item.answer) {
+          score++;
+          corrections += `<p>Q${index + 1}: <span class="correct">Correct</span>. <span class="answer">${item.answer}</span> (${item.explanation})</p>`;
+        } else {
+          allCorrect = false;
+          corrections += `<p>Q${index + 1}: <span class="incorrect">Wrong</span>. Correct answer is <span class="answer">${item.answer}</span> (${item.explanation})</p>`;
+        }
+      });
+
+      // Show result
+      document.getElementById('score').innerText = `${score}/20`;
+      document.getElementById('corrections').innerHTML = corrections;
+      document.getElementById('quiz-area').style.display = 'none';
+      document.getElementById('result-area').style.display = 'block';
+
+      if (allCorrect) {
+        document.getElementById('result-area').style.display = 'none';
+        document.getElementById('well-done').style.display = 'block';
+      }
+    }
+
+    function goHome() {
+      document.querySelector('.subject-card').style.display = 'flex'; // Show subject selection
+      document.getElementById('quiz-area').style.display = 'none';
+      document.getElementById('result-area').style.display = 'none';
+      document.getElementById('well-done').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

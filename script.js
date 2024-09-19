@@ -92,38 +92,3 @@ function displayNews(articles) {
 
 // Fetch and display the latest news when the page loads
 window.addEventListener("load", fetchLatestNews);
-
-
-// Array of educational image URLs (replace with real URLs)
-const educationalImages = [
-    "https://www.example.com/educational-image1.jpg",
-    "https://www.example.com/educational-image2.jpg",
-    "https://www.example.com/educational-image3.jpg",
-    "https://www.example.com/educational-image4.jpg"
-  ];
-  
-  // Get the image element
-  const imgElement = document.getElementById('educationalImage');
-  
-  // Index to keep track of the current image
-  let currentImageIndex = 0;
-  
-  // Function to change the image
-  function changeImage() {
-    currentImageIndex = (currentImageIndex + 1) % educationalImages.length; // Loop through images
-    imgElement.src = educationalImages[currentImageIndex]; // Update image source
-  }
-  
-  // Set interval to change image every minute (60000ms = 1 minute)
-  setInterval(changeImage, 60000);
-  
-  // Optionally, you can immediately trigger the change on page load
-  changeImage();
-  
-
-  
-
-  /* 
-inspiration
-https://dribbble.com/shots/11918677-Healthco-Website/attachments/3544908?mode=media
-*/
