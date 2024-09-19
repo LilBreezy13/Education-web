@@ -499,6 +499,182 @@
           </div>
         </section>
 
+
+
+
+
+
+<!-- ///////////////  MEET THE TEAM CODE STARTS HERE //////////////   -->
+
+        <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f0f0f0;
+                }
+                .team-section {
+                    display: flex;
+                    justify-content: space-evenly;
+                    flex-wrap: wrap;
+                    padding: 10px;
+                }
+                .team-card {
+                    position: relative;
+                    background-color: #fff;
+                    width: 250px;
+                    margin: 10px;
+                    height: 30%;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .team-card:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                }
+                .team-card img {
+                    width: 100%;
+                    height: auto;
+                }
+                .team-info {
+                    text-align: center;
+                    padding: 15px;
+                }
+                .team-info h3 {
+                    margin: 10px 0;
+                    font-size: 20px;
+                    color: #333;
+                }
+                .team-info p {
+                    font-size: 16px;
+                    color: #777;
+                }
+                .social-sidebar {
+                    position: absolute;
+                    top: 0;
+                    left: -40px;
+                    width: 40px;
+                    height: 100%;
+                    background-color: #007bff;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    transition: left 0.3s ease;
+                }
+                .team-card:hover .social-sidebar {
+                    left: 0;
+                }
+                .social-sidebar a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 18px;
+                    margin: 10px 0;
+                    transition: transform 0.3s ease;
+                }
+                .social-sidebar a:hover {
+                    transform: scale(1.2);
+                }
+                /* Media Query for responsiveness */
+                @media (max-width: 768px) {
+                    .team-section {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .team-card {
+                        width: 90%;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+
+          <p class="section-subtitle">Meet The Team</p>
+        
+            <div class="team-section">
+                <div class="team-card">
+                    <div class="social-sidebar">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <img src="./assets/images/boss. 300x300 (1).jpg" alt="Team Member 1">
+                    <div class="team-info">
+                        <h3>Bacon Atsu Amengor</h3>
+                        <p>Founder & CEO </p>
+                    </div>
+                </div>
+        
+                <div class="team-card">
+                    <div class="social-sidebar">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <img src="./assets/images/DEP-300x300 (1).jpg" alt="Team Member 2">
+                    <div class="team-info">
+                        <h3>Francis Vinyo</h3>
+                        <p>Deputy Director</p>
+                    </div>
+                </div>
+        
+                <div class="team-card">
+                    <div class="social-sidebar">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <img src="./assets/images/ADIKA-300x300.jpg" alt="Team Member 3">
+                    <div class="team-info">
+                        <h3>Adika Fernand</h3>
+                        <p>General Manager</p>
+                    </div>
+                </div>
+        
+                <div class="team-card">
+                    <div class="social-sidebar">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <img src="./assets/images/amd-300x300.jpg" alt="Team Member 4">
+                    <div class="team-info">
+                        <h3>Atsu Mensah Daniel</h3>
+                        <p>M.I.S Manager</p>
+                    </div>
+                </div>
+            </div>
+        
+            <script>
+                // Add Font Awesome for social icons
+                (function() {
+                    var link = document.createElement('link');
+                    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+                    link.rel = 'stylesheet';
+                    document.head.appendChild(link);
+                })();
+            </script>
+        
+
+
+
+<!-- ///////////////  MEET THE TEAM CODE ENDS HERE //////////////   -->
+
+
+
+<!-- ////---///---/// TESTIMONIALS STARTS HERE ///---///---///---////  -->
+
+<!-- ////---///---/// TESTIMONIALS ENDS HERE ///---///---///---////  -->
+
+
+
+
+
+
+
+        
         <!-- 
         - #COURSE
       -->
@@ -854,6 +1030,107 @@
     <!-- //////////// NEWS ENDED  -->
       </article>
     </main>
+
+
+
+    <!-- BRANDS  ?////////////////// ? -->
+
+    <style>
+  
+
+      .brand-sponsors {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          /* width: 90%; */
+          /* max-width: 1200px; */
+      }
+
+      .brand-logo {
+          width: 120px;
+          height: 120px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 4px 7%;
+          /* background-color: #ffffff; */
+          /* border: 2px solid #eee; */
+          /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+          transition: all 0.3s ease;
+          cursor: pointer;
+      }
+
+      .brand-logo img {
+          width: 180%;
+          height: 160%;
+          object-fit: contain;
+      }
+
+      .gnat{
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      /* Hover effect */
+      /* .brand-logo:hover {
+          transform: scale(1.1);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      } */
+
+      /* Responsive styles for mobile and tablet */
+      @media (max-width: 768px) {
+          .brand-logo {
+              width: 100px;
+              height: 100px;
+          }
+
+          .brand-logo img {
+              width: 65%;
+              height: 65%;
+          }
+      }
+
+      @media (max-width: 480px) {
+          .brand-logo {
+              width: 80px;
+              height: 80px;
+          }
+
+          .brand-logo img {
+              width: 60%;
+              height: 60%;
+          }
+      }
+  </style>
+<br>
+<h2 class="h2 section-title">Educational Institutions for Brand Standards</h2>
+<p class="section-subtitle">Our Standards are based on the brand educational Institutions of the country.</p>
+
+
+
+
+  <div class="brand-sponsors">
+      <!-- Sponsor 1 -->
+      <div class="brand-logo">
+          <img class="gnat" src="./assets/images/gnat.5379118ad4ea6725aeab (1).png" alt="Brand 1">
+      </div>
+      <!-- Sponsor 2 -->
+      <div class="brand-logo">
+          <img src="./assets/images/waec.6950cf4953b94a5601be.png" alt="Brand 2">
+      </div>
+      <!-- Sponsor 3 -->
+      <div class="brand-logo">
+          <img src="./assets/images/ges.911021648cc313305699.png" alt="Brand 3">
+      </div>
+    
+  </div>
+
+</body>
+</html>
+
+  
+<!-- BRANDS  ?////////////////// ? -->
 
     <!-- 
     - #FOOTER

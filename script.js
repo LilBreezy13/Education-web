@@ -123,4 +123,7 @@ const educationalImages = [
 
   
 
-  
+  /* 
+inspiration
+https://dribbble.com/shots/11918677-Healthco-Website/attachments/3544908?mode=media
+*/
