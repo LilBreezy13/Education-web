@@ -1621,7 +1621,9 @@ padding: 20px 15px 0;
 
 
 
-/* <!-- CONTACT US /////////////////////////////  -->  *//* General Styles */body {
+/* <!-- CONTACT US /////////////////////////////  -->  *//* General Styles */
+/* General Styles - No Changes */
+body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
@@ -1640,9 +1642,9 @@ section {
   background: linear-gradient(to right, #0b41e1, #eceae9);
   color: white;
   padding: 30px;
-  margin: -20px;
-  padding-right: 17%;
-  padding-left: 9%;
+  margin: 0;
+  padding-right: 10%;
+  padding-left: 10%;
 }
 
 .hero h1 {
@@ -1725,6 +1727,7 @@ section {
   background: linear-gradient(to right, #0b41e1, #eceae9);
   padding: 60px 20px;
   color: white;
+  margin: -20px;
 }
 
 .contact-container {
@@ -1803,19 +1806,62 @@ button[type="submit"]:hover {
   background-color: #0553b1;
 }
 
-/* Responsive Design */
+/* Enhanced Mobile View */
+
+/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
+  /* Stack Hero Section on Mobile */
+  .hero {
+    flex-direction: column;
+    text-align: center; /* Center the text on mobile */
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .hero h1 {
+    font-size: 2em; /* Reduced size for mobile */
+    max-width: 100%;
+  }
+
+  .hero-image {
+    margin-top: 20px; /* Add margin to separate image from text */
+  }
+
+  /* Stack Info Section */
+  .info-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Adjust padding for mobile */
+  }
+
+  .info-box {
+    width: 90%; /* Full width for mobile */
+    margin-bottom: 20px; /* Add margin between boxes */
+  }
+
+  /* Map Section: Stack Text and Map */
+  .map-section {
+    flex-direction: column;
+  }
+
+  .map-instructions {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Contact Form */
   .form-row {
     flex-direction: column;
     gap: 0;
   }
 
   .contact-container {
-    padding: 30px 20px;
+    padding: 30px 20px; /* Adjust padding for mobile */
   }
 
   .contact-section h2 {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 
   button[type="submit"] {
@@ -1823,9 +1869,14 @@ button[type="submit"]:hover {
   }
 }
 
+/* Mobile Adjustments for Very Small Screens */
 @media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.6em; /* Further reduce text size */
+  }
+
   .contact-section h2 {
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
 
   .contact-subtitle {
@@ -1841,5 +1892,3 @@ button[type="submit"]:hover {
     padding: 12px;
   }
 }
-
-
