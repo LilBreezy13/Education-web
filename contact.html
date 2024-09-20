@@ -201,7 +201,10 @@
   <!-- Info Boxes Section -->
   <section class="info-section">
       <div class="info-box">
-          <i class="fas fa-phone"></i>
+        <i class="fas fa-phone-square"></i>
+
+
+
           <h2>Let's Connect</h2>
           <p><strong>WhatsApp:</strong>02077322900</p>
           <p><strong>Phone:</strong>0558408866</p>
@@ -220,40 +223,44 @@
       </div>
   </section>
 
-  <!-- Map Section -->
-  <section class="map-section">
-      <div class="map">
-          <img src="./assets/images/Ghana_Regional_Map (1).jpg" alt="Map of Ghana" usemap="#ghana-map">
-          <map name="ghana-map">
-              <area shape="rect" coords="50,50,150,150" href="https://www.google.com/maps/dir/5.6165796,-0.2244646/Brenya+Ave,+Accra/@5.6003064,-0.3549195,11.25z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfdf99799d5b43b5:0xdf3f5042d45a4350!2m2!1d-0.2301728!2d5.6107195?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D" alt="Greater Accra">
-              <area shape="rect" coords="200,200,300,300" href="https://www.google.com/maps/dir/5.6165796,-0.2244646/Brenya+Ave,+Accra/@5.6003064,-0.3549195,11.25z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfdf99799d5b43b5:0xdf3f5042d45a4350!2m2!1d-0.2301728!2d5.6107195?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D" alt="Ashanti(Kumasi)">
-          </map>
-      </div>
-      <div class="map-instructions">
-          <h2>Click on a region</h2>
-          <p>Click on a region on the map to see Best Brain Examinations Konsortium branches in the region.</p>
-      </div>
-  </section>
-
-  <!-- Contact Us Section -->
-  <section class="contact-section">
-      <h2>Contact Us</h2>
+<!-- Map Section -->
+<section class="map-section">
+    <div class="map">
+        <img src="./assets/images/Ghana_Regional_Map (1).jpg" alt="Map of Ghana" usemap="#ghana-map" class="responsive-map">
+        <map name="ghana-map">
+            <area shape="rect" coords="50,50,150,150" alt="Greater Accra">
+            <area shape="rect" coords="200,200,300,300" alt="Ashanti (Kumasi)">
+        </map>
+    </div>
+    <div class="map-instructions" id="map-instructions">
+        <h2>Click on a region</h2>
+        <p>Click on a region on the map to see Best Brain Examinations Konsortium branches in the region.</p>
+    </div>
+</section>
+<!-- Contact Us Section -->
+<section class="contact-section">
+  <div class="contact-container">
+      <h2>Get in touch with us.</h2>
+      <p class="contact-subtitle">We'd love to hear from you! Send us a message and we'll respond as soon as possible.</p>
       <form id="contact-form">
-          <div class="form-group">
-              <label for="name">Full Name*</label>
-              <input type="text" id="name" placeholder="Nicholas Adebayo">
+          <div class="form-row">
+              <div class="form-group">
+                  <input type="text" id="name" placeholder="Your Full Name Here *" required>
+              </div>
+              <div class="form-group">
+                  <input type="email" id="email" placeholder="Your Email Here *" required>
+              </div>
           </div>
           <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" id="email" placeholder="nickyjay013@gmail.com">
+              <input type="text" id="subject" placeholder="Subject *" required>
           </div>
           <div class="form-group">
-              <label for="message">Message:</label>
-              <textarea id="message" placeholder="Start writing your Message"></textarea>
+              <textarea id="message" placeholder="Write your message here *" rows="6" required></textarea>
           </div>
           <button type="submit">Send Message</button>
       </form>
-  </section>
+  </div>
+</section>
 
   <!-- Include FontAwesome for icons -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -985,11 +992,11 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">Sign In/Registration</a>
+              <a href="./login.html" class="footer-link">Sign In/Registration</a>
             </li>
 
             <li>
-              <a href="#" class="footer-link">Coming Soon</a>
+              <a href="./test.html" class="footer-link">Test & Quizzes</a>
             </li>
           </ul>
 

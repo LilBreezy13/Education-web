@@ -1652,12 +1652,12 @@ section {
 
 .hero-image img {
   max-width: 300px;
-  height: auto; /* Changed to auto for better scaling */
+  height: auto;
 }
 
 .caller {
   max-width: 300px;
-  height: auto; /* Changed to auto for better scaling */
+  height: auto;
 }
 
 /* Info Section */
@@ -1687,7 +1687,7 @@ section {
   color: #0b41e1;
 }
 
-.info-box h2 {
+.info-box h4 {
   font-size: 1.5em;
   margin: 20px 0;
 }
@@ -1700,8 +1700,11 @@ section {
 }
 
 .map {
-  max-width: 110%;
-  height: auto; /* Changed to auto for better scaling */
+  max-width: 100%;
+  width: 100%; /* Ensure the map uses full width */
+  min-width: 300px; /* Prevent the map from shrinking below a usable size */
+  height: auto;
+  object-fit: cover; /* Ensures the aspect ratio is maintained */
 }
 
 .map-instructions {
@@ -1719,138 +1722,124 @@ section {
 
 /* Contact Section */
 .contact-section {
-  background-color: #f5f5f7;
+  background: linear-gradient(to right, #0b41e1, #eceae9);
+  padding: 60px 20px;
+  color: white;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
   padding: 40px;
-  color: #000aba;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 
 .contact-section h2 {
   text-align: center;
+  font-size: 1.2em;
+  color: #0b3d91;
+  margin-bottom: 10px;
+}
+
+.contact-subtitle {
+  text-align: center;
+  font-size: 1.1em;
+  color: #000;
   margin-bottom: 40px;
-  font-size: 2.5em;
+}
+
+/* Form Styles */
+form {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .form-group {
+  width: 100%;
   margin-bottom: 20px;
 }
 
-.form-group label {
-  font-size: 1.2em;
-  display: block;
-  margin-bottom: 5px;
+input, textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 6px;
+  border: 2px solid #ddd;
+  font-size: 1em;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+  outline: none;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: none;
-  color: black;
-  font-weight: bold;
+input:focus, textarea:focus {
+  border-color: #0b3d91;
+  box-shadow: 0 0 10px rgba(11, 61, 145, 0.2);
+}
+
+textarea {
+  resize: none;
 }
 
 button[type="submit"] {
-  background-color: #0b41e1;
+  background-color: #0b3d91;
   color: white;
-  border: none;
-  padding: 15px 25px;
+  padding: 15px 30px;
   font-size: 1.2em;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 5px;
   width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #3498db;
+  background-color: #0553b1;
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  .hero {
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .hero h1 {
-    font-size: 2em;
-    max-width: 90%;
-    text-align: center;
-  }
-
-  .info-section {
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .info-box {
-    width: 80%;
-    margin-bottom: 20px;
-  }
-
-  .map-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .map {
-    width: auto;
-    max-width: auto; /* Adjust for mobile */
-    height: auto;
-  }
-
-  .map-instructions {
-    max-width: 100%;
-    text-align: center;
-  }
-}
-
 @media (max-width: 768px) {
-  .hero {
-    padding: 15px;
-  }
-  
-  .info-section {
-    padding: 15px;
-  }
-  
-  .info-box {
-    width: 100%;
+  .form-row {
+    flex-direction: column;
+    gap: 0;
   }
 
-  .map-instructions h2 {
-    font-size: 1.5em;
-  }
-
-  .map-instructions p {
-    font-size: 1em;
+  .contact-container {
+    padding: 30px 20px;
   }
 
   .contact-section h2 {
     font-size: 2em;
   }
+
+  button[type="submit"] {
+    font-size: 1.1em;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.5em;
+  .contact-section h2 {
+    font-size: 1.8em;
   }
 
-  .info-box h2 {
-    font-size: 1.2em;
+  .contact-subtitle {
+    font-size: 1em;
+  }
+
+  input, textarea {
+    padding: 12px;
   }
 
   button[type="submit"] {
     font-size: 1em;
-  }
-
-  .map-instructions h2 {
-    font-size: 1.3em;
-  }
-
-  .map-instructions p {
-    font-size: 0.9em;
+    padding: 12px;
   }
 }
+
+
