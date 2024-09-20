@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- 
     - primary meta tag
@@ -110,7 +112,7 @@
             </li>
 
             <li class="navbar-item">
-              <a href="#about" class="navbar-link" data-nav-link>About</a>
+              <a href="./about.html" class="navbar-link" data-nav-link>About</a>
             </li>
 
             <li class="navbar-item">
@@ -118,16 +120,16 @@
             </li>
 
             <li class="navbar-item">
-              <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+              <a href="./blog.html" class="navbar-link" data-nav-link>Blog</a>
             </li>
 
             <li class="navbar-item">
               <a href="#" class="navbar-link" data-nav-link>Contact</a>
             </li>
 
-            <li class="navbar-item">
+            <!-- <li class="navbar-item">
               <a href="#" class="navbar-link" data-nav-link>Contact</a>
-            </li>
+            </li> -->
           </ul>
         </nav>
 
@@ -176,52 +178,100 @@
 
       
 
-        <section class="section category" aria-label="category">
-          <div class="container">
-         
-                    </div>
-                  </div>
+<br>
+<br>
+<br>
 
-                  <!-- <h3 class="h3">
-                    <a href="#" class="card-title">General Assessment</a>
-                  </h3> -->
 
-                  <!-- <p class="card-text">
-                    We provide Graded Special Mock Examination for B.E.CE Candidates 
-                    on monthly basis and Special End Of Term Exams For Basic Schools.
-                  </p> -->
-<!-- 
-                  <span class="card-badge">8 Courses</span>
-                </div>
-              </li> -->
+<!-- CONTACT US /////////////////////////////  -->
 
-              <!-- <li> -->
-                <!-- <div class="category-card" style="--color: 42, 94%, 55%">
-                  <div class="card-icon">
-                    <img
-                      src="./assets/images/category-4.svg"
-                      width="40"
-                      height="40"
-                      loading="lazy"
-                      alt="Hybrid Distance Programs"
-                      class="img"
-                    />
-                  </div> -->
 
-                  <!-- <h3 class="h3">
-                    <a href="#" class="card-title">Hybrid Distance Programs</a>
-                  </h3> -->
 
-                  <!-- <p class="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
-                  </p> -->
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+          <h2>Get in touch</h2>
+          <p> <i>We are happy to help</i> </p>
+      </div>
+      <div class="hero-image">
+          <img class="caller" src="./assets/images/CUSTOMER_SERVICE-removebg-preview.png" alt="Caller">
+      </div>
+  </section>
 
-                  <!-- <span class="card-badge">8 Courses</span> -->
-                </div>
-              </li>
-            </ul>
+  <!-- Info Boxes Section -->
+  <section class="info-section">
+      <div class="info-box">
+          <i class="fas fa-phone"></i>
+          <h2>Let's Connect</h2>
+          <p><strong>WhatsApp:</strong>02077322900</p>
+          <p><strong>Phone:</strong>0558408866</p>
+          <p><strong>Email:</strong> info@bestbrain.com</p>
+      </div>
+      <div class="info-box">
+          <i class="fas fa-clock"></i>
+          <h2>Working Hours</h2>
+          <p><strong>Monday - Friday:</strong> 8:30 AM - 5:00 PM</p>
+          <p><strong>Saturday - Sunday:</strong> Closed</p>
+      </div>
+      <div class="info-box">
+          <i class="fas fa-map-marker-alt"></i>
+          <h2>Locate Us</h2>
+          <p><strong>Address:</strong> Best Brain Examinations Konsortium, Brenya Ave, Accra</p>
+      </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+      <div class="map">
+          <img src="./assets/images/Ghana_Regional_Map (1).jpg" alt="Map of Ghana" usemap="#ghana-map">
+          <map name="ghana-map">
+              <area shape="rect" coords="50,50,150,150" href="https://www.google.com/maps/dir/5.6165796,-0.2244646/Brenya+Ave,+Accra/@5.6003064,-0.3549195,11.25z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfdf99799d5b43b5:0xdf3f5042d45a4350!2m2!1d-0.2301728!2d5.6107195?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D" alt="Greater Accra">
+              <area shape="rect" coords="200,200,300,300" href="https://www.google.com/maps/dir/5.6165796,-0.2244646/Brenya+Ave,+Accra/@5.6003064,-0.3549195,11.25z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfdf99799d5b43b5:0xdf3f5042d45a4350!2m2!1d-0.2301728!2d5.6107195?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D" alt="Ashanti(Kumasi)">
+          </map>
+      </div>
+      <div class="map-instructions">
+          <h2>Click on a region</h2>
+          <p>Click on a region on the map to see Best Brain Examinations Konsortium branches in the region.</p>
+      </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section class="contact-section">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+          <div class="form-group">
+              <label for="name">Full Name*</label>
+              <input type="text" id="name" placeholder="Nicholas Adebayo">
           </div>
-        </section>
+          <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" placeholder="nickyjay013@gmail.com">
+          </div>
+          <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" placeholder="Start writing your Message"></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+      </form>
+  </section>
+
+  <!-- Include FontAwesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<!-- CONTACT US ENDS /////////////////////////////  -->
+
+
+
+
+
+
 
         <!-- 
         - #ABOUT
@@ -1037,6 +1087,8 @@
     - custom js link
   -->
     <script src="./assets/js/script.js" defer></script>
+    
+    <script src="./contact.js"></script>
 
     <!-- 
     - ionicon link
