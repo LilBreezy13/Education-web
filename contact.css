@@ -1727,7 +1727,7 @@ section {
   background: linear-gradient(to right, #0b41e1, #eceae9);
   padding: 60px 20px;
   color: white;
-  margin: -20px;
+  /* margin: -20px; */
 }
 
 .contact-container {
