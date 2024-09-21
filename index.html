@@ -267,6 +267,202 @@
         - #CATEGORY
       -->
 
+
+
+      <style>
+     
+    
+        .container {
+          width: 100%;
+          max-width: 1200px;
+          padding: 7px 7px;
+          overflow: hidden;
+        }
+    
+        .cards {
+          display: flex;
+          justify-content: space-between;
+          gap: 30px;
+          opacity: 0;
+          transform: translateX(100%);
+          transition: all 0.6s ease;
+        }
+    
+        .card {
+          background: #fff;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          width: 30%;
+          transition: transform 0.3s, box-shadow 0.3s;
+          position: relative;
+        }
+    
+        .card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+    
+        .card-icon {
+          font-size: 4rem;
+          color: orange;
+          margin-bottom: 20px;
+          display: inline-block;
+        }
+    
+        .card-title {
+          font-size: 1.6rem;
+          color: #333;
+          margin-bottom: 15px;
+        }
+    
+        .card-divider {
+          border-top: 1px dotted orange;
+          margin: 20px 0;
+        }
+    
+        .card-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 1rem;
+          color: #666;
+        }
+    
+        .card-footer a {
+          color: orange;
+          text-decoration: none;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          transition: transform 0.3s ease;
+        }
+    
+        .card-footer a:hover {
+          transform: translateX(5px);
+        }
+    
+        .arrow-icon {
+          font-size: 1.5rem;
+        }
+    
+        /* Scroll Animation */
+        .active {
+          opacity: 1;
+          transform: translateX(0);
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .cards {
+            flex-direction: column;
+            gap: 20px;
+          }
+    
+          .card {
+            width: 100%;
+          }
+    
+          .card-footer {
+            font-size: 0.9rem;
+          }
+        }
+      </style>
+    </head>
+    <body>
+
+      <p class="section-subtitle">Our Services</p>
+
+      <h2 class="h2 section-title">
+        Our <span class="span">Attention</span> to the small stuff
+      </h2>
+
+      <p class="section-text">
+        scheduling of timelines and keen project management that makes us stand out from the rest.
+      </p>
+
+      <br>
+
+    
+      <div class="container">
+        <div class="cards" id="cards">
+          <!-- Card 1 -->
+          <div class="card">
+            <span class="card-icon"><i class="fas fa-graduation-cap"></i></span>
+            <h2 class="card-title">Academic Excellence Awards</h2>
+            <p class="card-text">
+              We Again Provide Special-Competitive-Excellence Awards For
+              Schools, Teachers And Pupils At District, Regional And
+              National Level..
+            </p>
+            <div class="card-divider"></div>
+            <div class="card-footer">
+              <span>Explore more</span>
+              <a href="#">
+                <span>Go</span>
+                <span class="arrow-icon">→</span>
+              </a>
+            </div>
+          </div>
+    
+          <!-- Card 2 -->
+          <div class="card">
+            <span class="card-icon">  <i class="fas fa-book-reader"></i></span>
+            <h2 class="card-title">Research & Educational Publications</h2>
+            <p class="card-text">
+              We Provide In-Service For Teachers, Curriculum Development And Training. 
+              We Also Provide Textbooks, Pamphlets e.t.c. To Schools And The Public..
+            </p>
+            <div class="card-divider"></div>
+            <div class="card-footer">
+              <span>Learn more</span>
+              <a href="#">
+                <span>Go</span>
+                <span class="arrow-icon">→</span>
+              </a>
+            </div>
+          </div>
+    
+          <!-- Card 3 -->
+          <div class="card">
+            <span class="card-icon">   <i class="fas fa-globe"></i></span>
+            <h2 class="card-title">General Assessment</h2>
+            <p class="card-text">
+              We provide Graded Special Mock Examination for B.E.CE Candidates 
+              on monthly basis and Special End Of Term Exams For Basic Schools.
+            </p>
+            <div class="card-divider"></div>
+            <div class="card-footer">
+              <span>See portfolio</span>
+              <a href="#">
+                <span>Go</span>
+                <span class="arrow-icon">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        // Slide cards in when scrolling
+        window.addEventListener('scroll', function() {
+          const cards = document.getElementById('cards');
+          const cardsPosition = cards.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+    
+          if (cardsPosition < screenPosition) {
+            cards.classList.add('active');
+          } else {
+            cards.classList.remove('active');
+          }
+        });
+      </script>
+
+
+
+
         <section class="section category" aria-label="category">
           <div class="container">
             <p class="section-subtitle">Our Services</p>
