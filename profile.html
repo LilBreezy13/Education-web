@@ -3,126 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Account Page</title>
-    <link rel="stylesheet" href="./profile.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Profile Dashboard</title>
+    <style>
+        /* General reset and styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: #000aba;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #0e14ce;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #bc1a1a;
+        }
+
+        .sidebar svg {
+            margin-right: 10px;
+        }
+
+        /* Content Styling */
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .navbar {
+            background-color: #000aba;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+        }
+
+        /* Welcome Animation */
+        .welcome {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            animation: slideIn 1.5s ease-in-out forwards, fadeOut 5s ease-out 5s forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Sections (Hidden by Default) */
+        .section {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+            .sidebar a {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sidebar {
+                width: 180px;
+            }
+            .sidebar a {
+                font-size: 12px;
+            }
+            .navbar {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li><a href="#" data-tab="account"><i class="fas fa-user"></i> My Account</a></li>
-                <li><a href="#" data-tab="orders"><i class="fas fa-clipboard-list"></i> Orders</a></li>
-                <li><a href="#" data-tab="pending-orders"><i class="fas fa-clock"></i> Pending Orders</a></li>
-                <li><a href="#" data-tab="recently-edited"><i class="fas fa-edit"></i> Recently Edited</a></li>
-                <li><a href="#" data-tab="edit-order"><i class="fas fa-pencil-alt"></i> Edit Order</a></li>
-                  <!-- Add Payment History tab -->
-                  <li><a href="#" data-tab="payment-history"><i class="fas fa-credit-card"></i> Payment History</a></li>
-            </ul>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Best Brain Konsortium</h2>
+        <a id="accountBtn" href="#"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFF" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> My Account</a>
+        <a id="enrollmentBtn" href="#"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFF" d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm1 17.93c-3.95.49-7.43-2.99-6.93-6.93.35-2.83 2.58-5.07 5.41-5.41 3.94-.49 7.43 2.99 6.93 6.93-.35 2.83-2.58 5.07-5.41 5.41z"/></svg> My Enrollments</a>
+        <a id="payNowBtn" href="#"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFF" d="M21 8H3V5h18v3zM4 16h16v2H4v-2zm0-4h16v2H4v-2z"/></svg> Pay Now</a>
+        <a id="paymentHistoryBtn" href="#"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFF" d="M12 8V4L8 8h4zm2 2V8h-2v4l4 4v-4h-2zM5 20h14v2H5v-2z"/></svg> Payment History</a>
+        <a id="editOrderBtn" href="#"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFF" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg> Edit Order</a>
+        <a id="cancelOrderBtn" href="#"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFF" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Cancel Order</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <!-- Navbar -->
+        <!-- <div class="navbar">
+            Welcome to Best Brain Examinations Konsortium
+        </div> -->
+
+        <!-- Welcome Animation -->
+        <div id="welcome" class="welcome">
+            <h1>Welcome to Your Dashboard</h1>
         </div>
-        <div class="content">
-            <div id="account" class="tab-content">
-                <h2>My Account</h2>
-                <p><strong>First Name:</strong> Hunsu</p>
-                <p><strong>Last Name:</strong> Nicholas</p>
-                <p><strong>Email:</strong> nickyjay013@gmail.com</p>
-                <p><strong>Phone Number:</strong> 0509967235</p>
-            </div>
-            <div id="orders" class="tab-content">
-                <h2>Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Exam</th>
-                            <th>Number of Candidates</th>
-                            <th>Ghanaian Language Options</th>
-                            <th>French Option</th>
-                            <th>Total Bill</th>
-                            <th>Order Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Mock Exam</td>
-                            <td>50</td>
-                            <td>3</td>
-                            <td>Yes</td>
-                            <td>Gh&#8373;500</td>
-                            <td>2024-08-15</td>
-                        </tr>
-                        <!-- More rows as needed -->
-                    </tbody>
-                </table>
-            </div>
-            <div id="pending-orders" class="tab-content">
-                <h2>Pending Orders</h2>
-                <p>No pending orders at the moment.</p>
-            </div>
-            <div id="recently-edited" class="tab-content">
-                <h2>Recently Edited</h2>
-                <p>No recent edits.</p>
-            </div>
-            <div id="edit-order" class="tab-content">
-                <h2>Edit Order</h2>
-                <form id="edit-order-form">
-                    <label for="num-candidates">Number of Candidates:</label>
-                    <input type="number" id="num-candidates" value="50">
-                    
-                    <label for="ghanaian-language">Ghanaian Language Options:</label>
-                    <input type="number" id="ghanaian-language" value="3">
-                    
-                    <label for="french-option">French Option:</label>
-                    <select id="french-option">
-                        <option value="yes" selected>Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                    
-                    <label for="school-name">School Name:</label>
-                    <input type="text" id="school-name" value="ABC School">
-                    
-                    <label for="location">Location:</label>
-                    <input type="text" id="location" value="Accra">
-                    
-                    <label for="contact">Contact:</label>
-                    <input type="text" id="contact" value="0509967235">
-                    
-                    <button type="button" onclick="updateOrder()">Update</button>
 
+        <!-- Sections -->
+        <div id="account" class="section">
+            <h3>My Account</h3>
+            <p>Account Name: Nicholas Adebayor</p>
+            <p>Email: nickyjay013@gmail.com</p>
+            <p>Phone Number: 0509967235</p>
+        </div>
 
-                </form>
-            </div>
+        <div id="enrollment" class="section">
+            <h3>My Enrollments</h3>
+            <p>Registration Date: 23rd September 2024</p>
+            <p>Exam Type: Mock</p>
+            <p>School: ABC School, Location: Achimota, Greater Accra</p>
+            <p>Ghanaian Language: AsanteTwi</p>
+        </div>
 
-              <!-- Payment History Section -->
-              <div id="payment-history" class="tab-content">
-                <h2>Payment History</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Payment ID</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>PAY12345</td>
-                            <td>2024-08-20</td>
-                            <td>Gh&#8373;500</td>
-                            <td>Completed</td>
-                        </tr>
-                        <tr>
-                            <td>PAY67890</td>
-                            <td>2024-09-10</td>
-                            <td>Gh&#8373;300</td>
-                            <td>Pending</td>
-                        </tr>
-                        <!-- More rows as needed -->
-                    </tbody>
-                </table>
-            </div>
+        <div id="payNow" class="section">
+            <h3>Pay Now</h3>
+            <p>Please pay for your exams</p>
+            <p>Mock Exams Total Bill: GHS 240.00</p>
+            <button>Proceed to Payment</button>
+        </div>
+
+        <div id="paymentHistory" class="section">
+            <h3>Payment History</h3>
+            <p>Payment ID: #123456789</p>
+            <p>Date: 22nd September 2024</p>
+            <p>Exam Type: Mock</p>
+            <p>Amount Paid: GHS 240.00</p>
+        </div>
+
+        <div id="editOrder" class="section">
+            <h3>Edit Order</h3>
+            <p>Edit your order for Mock or Terminal exams here.</p>
+        </div>
+
+        <div id="cancelOrder" class="section">
+            <h3>Cancel Order</h3>
+            <p>Cancel your order for Mock or Terminal exams.</p>
         </div>
     </div>
-    <script src="./profile.js"></script>
+
+    <script>
+        // Welcome animation hide after 5 seconds
+        setTimeout(function () {
+            document.getElementById('welcome').style.display = 'none';
+        }, 5000);
+
+        // Sidebar link functionality to show sections
+        document.getElementById('accountBtn').addEventListener('click', function () {
+            hideAllSections();
+            document.getElementById('account').classList.add('visible');
+        });
+
+        document.getElementById('enrollmentBtn').addEventListener('click', function () {
+            hideAllSections();
+            document.getElementById('enrollment').classList.add('visible');
+        });
+
+        document.getElementById('payNowBtn').addEventListener('click', function () {
+            hideAllSections();
+            document.getElementById('payNow').classList.add('visible');
+        });
+
+        document.getElementById('paymentHistoryBtn').addEventListener('click', function () {
+            hideAllSections();
+            document.getElementById('paymentHistory').classList.add('visible');
+        });
+
+        document.getElementById('editOrderBtn').addEventListener('click', function () {
+            hideAllSections();
+            document.getElementById('editOrder').classList.add('visible');
+        });
+
+        document.getElementById('cancelOrderBtn').addEventListener('click', function () {
+            hideAllSections();
+            document.getElementById('cancelOrder').classList.add('visible');
+        });
+
+        // Helper function to hide all sections
+        function hideAllSections() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('visible');
+            });
+        }
+    </script>
+
 </body>
 </html>
