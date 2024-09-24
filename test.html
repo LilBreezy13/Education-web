@@ -144,7 +144,7 @@
   </div>
 
   <div class="container">
-    <h2>Select a Subject</h2>
+    <h2 id="subject-header">Select a Subject</h2>
     <div class="subject-card">
       <div class="card" onclick="loadQuiz('mathematics')">Mathematics</div>
       <div class="card" onclick="loadQuiz('science')">Integrated Science</div>
@@ -183,39 +183,38 @@
     let timer;
     let timeRemaining = 1200; // 20 minutes
     let selectedSubject = '';
+    let quizStarted = false;
     let questions = {
       mathematics: [
         { q: "What is 2 + 2?", options: ["A. 3", "B. 4", "C. 5", "D. 6"], answer: "B", explanation: "B (4 is the sum of 2 and 2)." },
         { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
-        // Add more questions
       ],
       science: [
         { q: "Which of the following substances is not an element?", options: ["A. Aluminum", "B. Ammonia", "C. Oxygen", "D. Sodium"], answer: "B", explanation: "B (Ammonia (NH₃) is a compound made up of nitrogen (N) and hydrogen (H))." },
-        { q: "Which of the following statements about  is the chemical formula of water?", options: ["A. H2", "B. O2", "C. H2O", "D. CO2"], answer: "C", explanation: "C (Water is H2O)." },
-        // Add more questions
+        { q: "Which of the following is the chemical formula of water?", options: ["A. H2", "B. O2", "C. H2O", "D. CO2"], answer: "C", explanation: "C (Water is H2O)." },
       ],
       social: [
         { q: "Who was the first president of the USA?", options: ["A. Abraham Lincoln", "B. George Washington", "C. John Adams", "D. Thomas Jefferson"], answer: "B", explanation: "B (George Washington was the first president of the USA)." },
         { q: "What year did World War I start?", options: ["A. 1914", "B. 1915", "C. 1916", "D. 1917"], answer: "A", explanation: "A (World War I began in 1914)." },
-        // Add more questions
       ],
       english: [
         { q: "What is the antonym of 'happy'?", options: ["A. Sad", "B. Angry", "C. Excited", "D. Calm"], answer: "A", explanation: "'Sad' is the opposite of 'happy'." },
         { q: "Choose the correct spelling", options: ["A. Recieve", "B. Receive", "C. Receeve", "D. Receeve"], answer: "B", explanation: "B (The correct spelling is 'receive')." },
-        // Add more questions
       ]
     };
 
     function loadQuiz(subject) {
+      resetQuiz(); // Reset the quiz before loading new questions
       selectedSubject = subject;
       document.querySelector('.subject-card').style.display = 'none'; // Hide subject selection
+      document.getElementById('subject-header').style.display = 'none'; // Hide "Select a Subject" header
       const quizForm = document.getElementById('quiz-form');
       quizForm.innerHTML = ''; // Clear previous questions
       const selectedQuestions = questions[subject].sort(() => 0.5 - Math.random()).slice(0, 20);
       
       selectedQuestions.forEach((item, index) => {
-        const questionHTML = `
-          <div class="question">
+        const questionHTML = 
+          `<div class="question">
             <h4>Q${index + 1}. ${item.q}</h4>
             <div class="options">
               <label><input type="radio" name="q${index}" value="A"> ${item.options[0]}</label>
@@ -223,8 +222,7 @@
               <label><input type="radio" name="q${index}" value="C"> ${item.options[2]}</label>
               <label><input type="radio" name="q${index}" value="D"> ${item.options[3]}</label>
             </div>
-          </div>
-        `;
+          </div>`;
         quizForm.innerHTML += questionHTML;
       });
       
@@ -234,7 +232,7 @@
 
     function startTimer() {
       timeRemaining = 1200; // Reset to 20 minutes
-      clearInterval(timer);
+      clearInterval(timer); // Clear previous timer (if any)
       timer = setInterval(() => {
         timeRemaining--;
         const minutes = Math.floor(timeRemaining / 60);
@@ -242,13 +240,13 @@
         document.getElementById('timer').innerHTML = `<i class="icon-clock">&#9200;</i> Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         if (timeRemaining <= 0) {
           clearInterval(timer);
-          submitQuiz();
+          submitQuiz(); // Auto-submit quiz when time runs out
         }
       }, 1000);
     }
 
     function submitQuiz() {
-      clearInterval(timer);
+      clearInterval(timer); // Stop the timer
       const quizForm = document.getElementById('quiz-form');
       const formData = new FormData(quizForm);
       let score = 0;
@@ -281,9 +279,17 @@
 
     function goHome() {
       document.querySelector('.subject-card').style.display = 'flex'; // Show subject selection
+      document.getElementById('subject-header').style.display = 'block'; // Show the "Select a Subject" header
       document.getElementById('quiz-area').style.display = 'none';
       document.getElementById('result-area').style.display = 'none';
       document.getElementById('well-done').style.display = 'none';
+      clearInterval(timer); // Stop the timer when returning to home
+    }
+
+    function resetQuiz() {
+      timeRemaining = 1200; // Reset time
+      quizStarted = false;
+      clearInterval(timer); // Clear any previous timers
     }
   </script>
 
