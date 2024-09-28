@@ -4,125 +4,534 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Account Page</title>
-    <link rel="stylesheet" href="./profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f4f8;
+            overflow-x: hidden;
+        }
+
+
+
+        form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: #3b5998; /* Focus color */
+            outline: none;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2a4373; /* Darker shade on hover */
+        }
+
+        .payment-button{
+            color: #fff;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            padding-top: 3%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 50%;
+        }
+
+        .payment-area{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        padding: 3%;
+        }
+        /* Responsive Styles */
+        @media (max-width: 480px) {
+            form {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            button {
+                font-size: 14px; /* Smaller button text */
+            }
+
+            input[type="text"], select {
+                font-size: 14px; /* Smaller input text */
+            }
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background-color: #2d13f4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar .search-bar {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            margin: 0 20px; /* Margin to avoid overflow */
+        }
+        .navbar input[type="text"] {
+            padding: 8px;
+            border-radius: 20px;
+            border: none;
+            width: 100%; /* Full width for responsiveness */
+            max-width: 200px; /* Maximum width to prevent overflow */
+            margin-right: 10px;
+            outline: none;
+        }
+        .navbar button {
+            padding: 8px 15px;
+            background-color: #000aba;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+        }
+        .navbar button:hover {
+            background-color: #2a4373;
+        }
+
+        /* Right Navbar Section */
+        .navbar .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-right .icon {
+            margin-left: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        .navbar-right .icon i {
+            font-size: 20px;
+            color: white;
+        }
+        .navbar-right .icon .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 10px;
+        }
+        .navbar-right .profile {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .navbar-right .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .navbar-right .profile .username {
+            font-size: 16px;
+            color: white;
+        }
+
+        /* Dropdown for Account Settings */
+        .navbar-right .dropdown {
+            position: relative;
+        }
+        .navbar-right .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            top: 50px;
+        }
+        .navbar-right .dropdown-content a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .navbar-right .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .navbar-right .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #000aba;
+            color: #fff;
+            padding: 20px;
+            overflow-y: auto;
+            position: sticky;
+            top: 60px; /* Adjusted for fixed navbar */
+            height: calc(100vh - 60px);
+            flex-shrink: 0;
+            margin-top: 60px; /* Spacing for navbar */
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar ul li a i {
+            margin-right: 10px;
+        }
+        .sidebar ul li a:hover {
+            background-color: #4a69a2;
+        }
+
+        .content {
+            flex: 1;
+            padding: 80px 20px 20px; /* Padding adjusted for navbar */
+            background-color: #fff;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #2d13f4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        th {
+            background-color: #2d13f4;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                margin-top: 0;
+                top: 0;
+            }
+            .content {
+                width: 100%;
+                padding: 10px;
+            }
+            table {
+                font-size: 14px;
+                table-layout: auto;
+            }
+            .navbar .search-bar input[type="text"] {
+                width: 100%;
+                max-width: 150px; /* Adjust max-width for smaller screens */
+            }
+            .navbar-right .profile .username {
+                display: none; /* Hide username on smaller screens */
+            }
+        }
+        @media (max-width: 480px) {
+            .sidebar ul li {
+                margin-bottom: 10px;
+            }
+            .sidebar ul li a {
+                font-size: 14px;
+            }
+            .content {
+                padding: 10px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            table th, table td {
+                font-size: 12px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar .search-bar {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            .navbar .search-bar input[type="text"] {
+                width: 100%;
+            }
+            .navbar-right {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-right .icon, .navbar-right .profile {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li><a href="#" data-tab="account"><i class="fas fa-user"></i> My Account</a></li>
-                <li><a href="#" data-tab="orders"><i class="fas fa-clipboard-list"></i> Orders</a></li>
-                <li><a href="#" data-tab="pending-orders"><i class="fas fa-clock"></i> Pending Orders</a></li>
-                <li><a href="#" data-tab="recently-edited"><i class="fas fa-edit"></i> Recently Edited</a></li>
-                <li><a href="#" data-tab="edit-order"><i class="fas fa-pencil-alt"></i> Edit Order</a></li>
-                  <!-- Add Payment History tab -->
-                  <li><a href="#" data-tab="payment-history"><i class="fas fa-credit-card"></i> Payment History</a></li>
-            </ul>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">MyProfile</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <!-- <button>Search</button> -->
         </div>
-        <div class="content">
-            <div id="account" class="tab-content">
-                <h2>My Account</h2>
-                <p><strong>First Name:</strong> Hunsu</p>
-                <p><strong>Last Name:</strong> Nicholas</p>
-                <p><strong>Email:</strong> nickyjay013@gmail.com</p>
-                <p><strong>Phone Number:</strong> 0509967235</p>
+        <div class="navbar-right">
+            <!-- Notification Icon -->
+            <div class="icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span> <!-- Example badge -->
             </div>
-            <div id="orders" class="tab-content">
-                <h2>Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Exam</th>
-                            <th>Number of Candidates</th>
-                            <th>Ghanaian Language Options</th>
-                            <th>French Option</th>
-                            <th>Total Bill</th>
-                            <th>Order Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Mock Exam</td>
-                            <td>50</td>
-                            <td>3</td>
-                            <td>Yes</td>
-                            <td>Gh&#8373;500</td>
-                            <td>2024-08-15</td>
-                        </tr>
-                        <!-- More rows as needed -->
-                    </tbody>
-                </table>
+            <!-- Account Settings Dropdown -->
+            <div class="dropdown">
+                <div class="icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="dropdown-content">
+                    <a href="#">Account Settings</a>
+                    <a href="#">Logout</a>
+                </div>
             </div>
-            <div id="pending-orders" class="tab-content">
-                <h2>Pending Orders</h2>
-                <p>No pending orders at the moment.</p>
-            </div>
-            <div id="recently-edited" class="tab-content">
-                <h2>Recently Edited</h2>
-                <p>No recent edits.</p>
-            </div>
-            <div id="edit-order" class="tab-content">
-                <h2>Edit Order</h2>
-                <form id="edit-order-form">
-                    <label for="num-candidates">Number of Candidates:</label>
-                    <input type="number" id="num-candidates" value="50">
-                    
-                    <label for="ghanaian-language">Ghanaian Language Options:</label>
-                    <input type="number" id="ghanaian-language" value="3">
-                    
-                    <label for="french-option">French Option:</label>
-                    <select id="french-option">
-                        <option value="yes" selected>Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                    
-                    <label for="school-name">School Name:</label>
-                    <input type="text" id="school-name" value="ABC School">
-                    
-                    <label for="location">Location:</label>
-                    <input type="text" id="location" value="Accra">
-                    
-                    <label for="contact">Contact:</label>
-                    <input type="text" id="contact" value="0509967235">
-                    
-                    <button type="button" onclick="updateOrder()">Update</button>
-
-
-                </form>
-            </div>
-
-              <!-- Payment History Section -->
-              <div id="payment-history" class="tab-content">
-                <h2>Payment History</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Payment ID</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>PAY12345</td>
-                            <td>2024-08-20</td>
-                            <td>Gh&#8373;500</td>
-                            <td>Completed</td>
-                        </tr>
-                        <tr>
-                            <td>PAY67890</td>
-                            <td>2024-09-10</td>
-                            <td>Gh&#8373;300</td>
-                            <td>Pending</td>
-                        </tr>
-                        <!-- More rows as  needed here -->
-                    </tbody>
-                </table>
+            <!-- User Profile -->
+            <div class="profile">
+                <img src="https://via.placeholder.com/40" alt="Profile Image">
+                <span class="username">John Doe</span>
             </div>
         </div>
     </div>
-    <script src="./profile.js"></script>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" data-tab="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#" data-tab="orders"><i class="fas fa-box"></i> Orders</a></li>
+                <li><a href="#" data-tab="edit-order"><i class="fas fa-edit"></i> Edit Order</a></li>
+                <li><a href="#" data-tab="payment"><i class="fas fa-credit-card"></i> Pay Now</a></li>
+                <li><a href="#" data-tab="history"><i class="fas fa-history"></i> Payment History</a></li>
+                <li><a href="#" data-tab="settings"><i class="fas fa-cogs"></i> Settings</a></li>
+            </ul>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <div class="tab-content active" id="dashboard">
+                <h2>Dashboard</h2>
+                <p>Welcome to your Dashboard. Your recent activities will appear here.</p>
+            </div>
+            <div class="tab-content" id="orders">
+                <h2>Orders</h2>
+                <p><strong>Current Exam:</strong> Mock Exam</p>
+                <p><strong>Number of Candidates:</strong> 30</p>
+                <p><strong>Date of Registration:</strong> 2024-09-25</p>
+                <p><strong>Ghanaian Language Option:</strong> Akan</p>
+                <p><strong>French Option:</strong> Yes</p>
+            </div>
+            <div class="tab-content" id="edit-order">
+                <h2>Edit Order</h2>
+                <form>
+                    <label for="school-name">School Name:</label>
+                    <input type="text" id="school-name" name="school-name" required> 
+                    <label for="school-name">Contact:</label>
+                    <input type="text" id="contact" name="contact" required>
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required> 
+                    <label for="enrollment">Enrollment:</label>
+                    <input type="text" id="enrollment" name="enrollment" required> 
+                    <label for="gh-language">Select a Ghanaian Language</label>
+                    <select id="gh-language" name="gh-language" required>
+                       <option value="Asante Twi">Asante Twi</option>
+                    <option value="Akwapem Twi">Akwapem Twi</option>
+                    <option value="Fante">Fante</option>
+                    <option value="Ga">Ga</option>
+                    <option value="Dagbani">Dagbani</option>
+                    <option value="Dangme">Dangme</option>
+                    <option value="Ewe">Ewe</option>
+                    <option value="Nzema">Nzema</option>
+                    <option value="Gonja">Gonja</option>
+                    <option value="Kasem">Kasem</option>
+                    <option value="Dagaare">Dagaare</option>
+                    <option value="Dagbane">Dagbane</option>
+                    <option value="None">None</option>
+                    </select>
+                    <label for="french-option">French Option:</label>
+                    <select id="french-option" name="french-option" required> <br>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+            <div class="tab-content" id="payment">
+                <h2>Pay Now</h2>
+                <h3>Current Bill</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Registration Fee</td>
+                            <td>Gh&#8373; 420</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Fee</td>
+                            <td>Gh&#8373; 20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>Gh&#8373; 440</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 class="">Select Payment Method</h3>
+                <div class="payment-area">
+                <button class="payment-button">Bank Transfer</button> <br>
+                <button class="payment-button">MasterCard</button>
+                <button class="payment-button" >Mobile Money</button>
+            </div>
+            </div>
+            <div class="tab-content" id="history">
+                <h2>Payment History</h2>
+                <p>Your payment history will be displayed here.</p>
+            </div>
+            <div class="tab-content" id="settings">
+                <h2>Settings</h2>
+                <p>Update your settings here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.sidebar a');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Show the first tab content by default
+            tabContents[0].classList.add('active');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const targetTab = tab.getAttribute('data-tab');
+
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+
+                    // Show the selected tab content
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
