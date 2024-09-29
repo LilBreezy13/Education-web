@@ -367,6 +367,76 @@
                 margin-top: 10px;
             }
         }
+
+        .payment-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .payment-button {
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .card {
+            background: white;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-header {
+            background-color: #4e4e4e;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-button {
+            padding: 10px 15px;
+            background-color: #ff5f00;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+        }
+
+        .card-button:hover {
+            background-color: #e65100;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
@@ -397,7 +467,7 @@
             <!-- User Profile -->
             <div class="profile">
                 <img src="https://via.placeholder.com/40" alt="Profile Image">
-                <span class="username">John Doe</span>
+                <span class="username">Adebayor</span>
             </div>
         </div>
     </div>
@@ -424,9 +494,12 @@
             <div class="tab-content" id="orders">
                 <h2>Orders</h2>
                 <p><strong>Current Exam:</strong> Mock Exam</p>
+                <p><strong>Number of School:</strong> Abc International School</p>
+                <p><strong>Location:</strong> Achimota </p>
+                <p><strong>Contact:</strong> 0509967235</p>
                 <p><strong>Number of Candidates:</strong> 30</p>
                 <p><strong>Date of Registration:</strong> 2024-09-25</p>
-                <p><strong>Ghanaian Language Option:</strong> Akan</p>
+                <p><strong>Ghanaian Language Option:</strong>Fante</p>
                 <p><strong>French Option:</strong> Yes</p>
             </div>
             <div class="tab-content" id="edit-order">
@@ -491,10 +564,18 @@
                 </table>
                 <h3 class="">Select Payment Method</h3>
                 <div class="payment-area">
-                <button class="payment-button">Bank Transfer</button> <br>
-                <button class="payment-button">MasterCard</button>
-                <button class="payment-button" >Mobile Money</button>
-            </div>
+                    <button class="payment-button">Bank Transfer</button>
+            
+                    <div class="card">
+                        <div class="card-header">MasterCard</div>
+                        <div class="card-body">
+                            <p>Secure your payments with MasterCard</p>
+                            <button class="card-button">Pay with MasterCard</button>
+                        </div>
+                    </div>
+            
+                    <button class="payment-button">Mobile Money</button>
+                </div>
             </div>
             <div class="tab-content" id="history">
                 <h2>Payment History</h2>

@@ -1,152 +1,623 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Floating Exam Cards</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f0f0;
-      overflow-x: hidden;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+    <!-- 
+    - primary meta tag
+  -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
 
-    .card {
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      margin: 20px;
-      padding: 20px;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      position: relative;
-      transition: transform 0.3s ease-in-out;
-    }
+    <title>Best Brain</title>
+    <link rel="icon" type="image/x-icon" href="./Assets/favicon.ico" />
+  
+    <meta
+      name="title"
+      content="Best Brain Examinations Konsortium"
+    />
+    <meta
+      name="description"
+      content="This is an education html template made by codewithsadee"
+    />
 
-    .card:hover {
-      transform: translateY(-10px);
-    }
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/svg+xml" />
 
-    .price {
-      font-size: 20px;
-      color: #ff6b6b;
-      font-weight: bold;
-      margin: 10px 0;
-    }
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./contact.css" />
 
-    .description {
-      font-size: 16px;
-      color: #555;
-      margin: 15px 0;
-    }
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-    .list {
-      text-align: left;
-      margin-top: 20px;
-      padding: 0;
-      list-style: none;
-    }
+    <link rel="icon" type="image/x-icon" href="./Assets/favicon.ico" />
+   
+ 
 
-    .list li {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    .list li i {
-      color: #4CAF50;
-      margin-right: 10px;
-    }
-
-    .register-btn {
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 10px 20px;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-    }
-
-    .register-btn:hover {
-      background-color: #45a049;
-    }
-
-    /* Floating on Scroll */
-    .float-on-scroll {
-      opacity: 0;
-      transform: translateY(100px);
-      transition: all 0.5s ease-out;
-    }
-
-    .float-on-scroll.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive Design */
-    @media only screen and (max-width: 768px) {
-      .card {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <div class="card float-on-scroll">
-      <h2>TERMINAL EXAMS FOR NURSERY/KG</h2>
-      <p class="price">Price: 8 Ghana Cedis per head</p>
-      <p class="description">Everything included in this package is listed below:</p>
-      <ul class="list">
-        <li><i class="fas fa-file-alt"></i> 1. Examination questions</li>
-      </ul>
-      <button class="register-btn">Click to Register</button>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="card float-on-scroll">
-      <h2>TERMINAL EXAMS FOR NURSERY/KG</h2>
-      <p class="price">Price: 8 Ghana Cedis per head</p>
-      <p class="description">Everything included in this package is listed below:</p>
-      <ul class="list">
-        <li><i class="fas fa-file-alt"></i> 1. Examination questions</li>
-      </ul>
-      <button class="register-btn">Click to Register</button>
-    </div>
-  </div>
-
-  <script>
-    // JavaScript for Floating Effect on Scroll
-    const floatElements = document.querySelectorAll('.float-on-scroll');
-
-    window.addEventListener('scroll', () => {
-      floatElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight - 100) {
-          el.classList.add('active');
-        } else {
-          el.classList.remove('active');
-        }
-      });
-    });
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6633c261a0c6737bd133bd0e/1i6ckmcad';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
   </script>
-</body>
+  <!--End of Tawk.to Script-->
+  
+ 
+  <body id="top">
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header>
+      <div class="container">
+        <a href="#" class="logo">
+          <img
+            src="./assets/images/logo.721e724e0a02fece1eda.jpeg"
+            width="62"
+            height="40"
+            alt="EduWeb logo"
+          />
+        </a>
+
+        <nav class="navbar" data-navbar>
+          <div class="wrapper">
+            <a href="#" class="logo">
+              <img
+                src="./assets/images/logo.721e724e0a02fece1eda.jpeg"
+                width="52"
+                height="30"
+                alt="EduWeb logo"
+              />
+            </a>
+
+            <button
+              class="nav-close-btn"
+              aria-label="close menu"
+              data-nav-toggler
+            >
+              <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="./about.html" class="navbar-link" data-nav-link>About</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="./registration.html" class="navbar-link" data-nav-link>Registration</a>
+            </li>
+
+            <li class="navbar-item"></li>
+              <a href="./resource.html" class="navbar-link" data-nav-link>Resources</a>
+            </li>
+
+
+            <li class="navbar-item">
+              <a href="#" class="navbar-link" data-nav-link>Services</a>
+            </li>
+
+        
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="header-action-btn"
+            aria-label="toggle search"
+            title="Search"
+          >
+            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="header-action-btn" aria-label="cart" title="Cart">
+            <!-- <ion-icon name="cart-outline" aria-hidden="true"></ion-icon> -->
+
+            <!-- <span class="btn-badge">0</span> -->
+          </button>
+
+        
+
+          <button
+            class="header-action-btn"
+            aria-label="open menu"
+            data-nav-toggler
+          >
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <div class="overlay" data-nav-toggler data-overlay></div>
+      </div>
+    </header>
+
+    <main>
+      <article>
+        <!-- 
+        - #HERO
+      -->
+
+      
+        <!-- 
+        - #CATEGORY
+      -->
+
+
+
+      
+
+<br>
+<br>
+<br>
+
+
+<!-- CONTACT US /////////////////////////////  -->   <style>
+        /* Reset some default styles */
+     
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #f0f4f8, #e1e6eb);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Background image styling */
+        .background {
+            background: url('https://images.unsplash.com/photo-1573497491205-3fce65f3e6e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDg3MjR8MHwxfGFsbHwxfHx8fHx8fHwxNjA4MDI5MTY3&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.05; /* Make it barely visible */
+        }
+
+        /* Container for services */
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 50px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            margin-top: -50px; /* to prevent overlap with the background */
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Service card styling */
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+            padding: 20px;
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+            transform: translateY(20px);
+        }
+
+        /* Slide-in animation */
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Title and pricing styling */
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        /* Button styling */
+        .register-button {
+            background: linear-gradient(to right, #2980b9, #6dd5ed);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .register-button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #1c5d8e, #4bc6e8);
+        }
+
+        /* Ghana map styling */
+        .map-container {
+            margin: 50px 0;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            margin-bottom: 50px;
+        }
+
+        .map {
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .services-container {
+                padding: 20px;
+            }
+
+            .service-card {
+                width: 90%;
+            }
+
+            .map {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+    <div class="background"></div>
+    <div class="services-container" id="servicesContainer">
+        <div class="service-card">
+            <h2 class="service-title">Exam Package A</h2>
+            <p class="service-price">$50 per candidate</p>
+            <p>This package includes:</p>
+            <ul>
+                <li>Full Exam Preparation</li>
+                <li>Practice Tests</li>
+                <li>Personalized Feedback</li>
+            </ul>
+            <button class="register-button" onclick="location.href='registration.html'">Register</button>
+        </div>
+        <div class="service-card">
+            <h2 class="service-title">Exam Package B</h2>
+            <p class="service-price">$75 per candidate</p>
+            <p>This package includes:</p>
+            <ul>
+                <li>Full Exam Preparation</li>
+                <li>Mock Exams</li>
+                <li>Personalized Tutoring</li>
+            </ul>
+            <button class="register-button" onclick="location.href='registration.html'">Register</button>
+        </div>
+        <div class="service-card">
+            <h2 class="service-title">Exam Package C</h2>
+            <p class="service-price">$100 per candidate</p>
+            <p>This package includes:</p>
+            <ul>
+                <li>Full Exam Preparation</li>
+                <li>Practice Tests</li>
+                <li>Post-Exam Support</li>
+            </ul>
+            <button class="register-button" onclick="location.href='registration.html'">Register</button>
+        </div>
+    </div>
+
+    <!-- Ghana Map Section -->
+    <div class="map-container">
+        <img class="map" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ghana_location_map.svg/2880px-Ghana_location_map.svg.png" alt="Ghana Map">
+    </div>
+
+    <script>
+        // Fade in service cards when in viewport
+        window.addEventListener('scroll', () => {
+            const services = document.getElementById('servicesContainer');
+            const { top } = services.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (top < windowHeight - 100) {
+                services.style.opacity = 1;
+                const cards = document.querySelectorAll('.service-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = 1;
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100); // stagger the animations
+                });
+            }
+        });
+    </script>
+<!-- CONTACT US ENDS /////////////////////////////  -->
+
+
+
+
+
+
+
+       
+
+
+        
+       
+
+
+
+
+
+
+
+
+      
+     
+
+      </article>
+    </main>
+
+    <!-- 
+    - #FOOTER
+  -->
+
+    <footer
+      class="footer"
+      style="background-image: url('./assets/images/footer-bg.png')"
+    >
+      <div class="footer-top section">
+        <div class="container grid-list">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <img
+                src="./assets/images/logo.721e724e0a02fece1eda.jpeg"
+                width="100"
+                height="45"
+                alt="Best Brainlogo"
+              />
+            </a>
+
+            <p class="footer-brand-text">
+              We are poised to make a most <br> resounding impact on quality education
+            </p>
+
+            <div class="wrapper">
+              <span class="span">Add:</span>
+
+              <address class="address">Brenya Ave, Apenkwa</address>
+            </div>
+
+            <div class="wrapper">
+              <span class="span">Call:</span>
+
+              <a href="tel:02077322900" class="footer-link"
+                >0207732900</a
+              >
+            </div>
+
+            <div class="wrapper">
+              <span class="span">Email:</span>
+
+              <a href="mailto:bbexaminerss@gmail.com" class="footer-link"
+                >bbexaminerss@gmail.com</a
+              >
+            </div>
+          </div>
+
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Online Platform</p>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">About</a>
+            </li>
+
+            <!-- <li>
+              <a href="#" class="footer-link">Courses</a>
+            </li> -->
+
+            <!-- <li>
+              <a href="#" class="footer-link">Instructor</a>
+            </li> -->
+
+            <li>
+              <a href="#" class="footer-link">Events</a>
+            </li>
+
+            <!-- <li>
+              <a href="#" class="footer-link">Instructor Profile</a>
+            </li> -->
+
+            <!-- <li>
+              <a href="#" class="footer-link">Purchase Guide</a>
+            </li> -->
+          </ul>
+
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Links</p>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Contact Us</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Gallery</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">News & Articles</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">FAQ's</a>
+            </li>
+
+            <li>
+              <a href="./login.html" class="footer-link">Sign In/Registration</a>
+            </li>
+
+            <li>
+              <a href="./test.html" class="footer-link">Test & Quizzes</a>
+            </li>
+          </ul>
+
+          <div class="footer-list">
+            <p class="footer-list-title">Contacts</p>
+
+            <p class="footer-list-text">
+              Enter your email address to register to our newsletter
+              subscription
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input
+                type="email"
+                name="email_address"
+                placeholder="Your email"
+                required
+                class="input-field"
+              />
+
+              <button type="submit" class="btn has-before">
+                <span class="span">Subscribe</span>
+
+                <ion-icon
+                  name="arrow-forward-outline"
+                  aria-hidden="true"
+                ></ion-icon>
+              </button>
+            </form>
+
+            <ul class="social-list">
+              <li>
+                <a href="https://web.facebook.com/bestbrain.examinationskonsortium.77" class="social-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.instagram.com/bestbrainghana/" class="social-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://x.com/bestbrainghana" class="social-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            Copyright 2024 All Rights Reserved by
+            <a
+              href="https://github.com/LilBreezy13"
+              class="copyright-link"
+              >Hunsu Nicholas</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+
+    <a
+      href="#top"
+      class="back-top-btn"
+      aria-label="back top top"
+      data-back-top-btn
+    >
+      <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="./assets/js/script.js" defer></script>
+    
+    <script src="./contact.js"></script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
