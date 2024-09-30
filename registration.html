@@ -283,11 +283,15 @@
     </div>
 
 
+    
 
+<!-- ///////////////////////////////////////////////////  -->
 
     
 
-    <script>function showForm() {
+    <script>
+    
+    function showForm() {
         const registrationType = document.getElementById("registrationType").value;
         const terminalCandidates = document.getElementById("terminalCandidates");
         const mockExamTypes = document.getElementById("mockExamTypes");
@@ -418,57 +422,119 @@
         contactInput.value = contactValue.slice(0, 10); // Trim to 10 digits
     }
 }
+function confirmRegistration() {
+    // Gather form data
+    const schoolName = document.getElementById("schoolName").value;
+    const contact = document.getElementById("contact").value;
+    const location = document.getElementById("location").value;
+    const language = document.getElementById("language").value;
+    const registrationType = document.getElementById("registrationType").value;
+    const frenchOption = document.getElementById("frenchOption").value;
 
-    
-    function confirmRegistration() {
-        alert("You have successfully registered.");
+    // Get number of candidates for terminal exams
+    const nursery = parseInt(document.getElementById("nursery").value) || 0;
+    const kg1 = parseInt(document.getElementById("kg1").value) || 0;
+    const kg2 = parseInt(document.getElementById("kg2").value) || 0;
+    const basic1 = parseInt(document.getElementById("basic1").value) || 0;
+    const basic2 = parseInt(document.getElementById("basic2").value) || 0;
+    const basic3 = parseInt(document.getElementById("basic3").value) || 0;
+    const basic4 = parseInt(document.getElementById("basic4").value) || 0;
+    const basic5 = parseInt(document.getElementById("basic5").value) || 0;
+    const basic6 = parseInt(document.getElementById("basic6").value) || 0;
+    const basic7 = parseInt(document.getElementById("basic7").value) || 0;
+    const basic8 = parseInt(document.getElementById("basic8").value) || 0;
+    const basic9 = parseInt(document.getElementById("basic9").value) || 0;
+
+    // Get number of mock exams
+    const mockExamCount = parseInt(document.getElementById("mockExamCount").value) || 0;
+
+    // Prepare data to send to backend
+    const payload = {
+        school_name: schoolName,
+        contact: contact,
+        location: location,
+        language: language,
+        registration_type: registrationType,
+        french_option: frenchOption,
+        nursery: nursery,
+        kg1: kg1,
+        kg2: kg2,
+        basic1: basic1,
+        basic2: basic2,
+        basic3: basic3,
+        basic4: basic4,
+        basic5: basic5,
+        basic6: basic6,
+        basic7: basic7,
+        basic8: basic8,
+        basic9: basic9,
+        mock_exam_count: mockExamCount
+    };
+
+    // Make a POST request to the Go backend
+    fetch('http://localhost:3000/v1/RegisterMock', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => {
+                throw new Error(JSON.stringify(errorData));
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Show success modal
+        document.getElementById('customModal').style.display = 'flex';
+        document.getElementById('modalTitle').innerText = "Registration Successful";
+        document.getElementById('modalMessage').innerText = "Your registration details have been submitted successfully.";
+
+        // Optionally reset the form after success
         resetForm();
-    }
-    
-    function resetForm() {
-        document.getElementById("schoolName").value = "";
-        document.getElementById("contact").value = "";
-        document.getElementById("location").value = "";
-        document.getElementById("language").value = "";
-        document.getElementById("registrationType").value = "";
-        document.getElementById("frenchOption").value = "no";
-        document.getElementById("nursery").value = "";
-        document.getElementById("kg1").value = "";
-        document.getElementById("kg2").value = "";
-        document.getElementById("basic1").value = "";
-        document.getElementById("basic2").value = "";
-        document.getElementById("basic3").value = "";
-        document.getElementById("basic4").value = "";
-        document.getElementById("basic5").value = "";
-        document.getElementById("basic6").value = "";
-        document.getElementById("basic7").value = "";
-        document.getElementById("basic8").value = "";
-        document.getElementById("basic9").value = "";
-        document.getElementById("mockExamCount").value = "";
-        document.getElementById("summarySection").style.display = "none";
-        showForm();
-    }
-    
-    // Add event listeners to inputs to automatically update the summary
-    document.querySelectorAll('.form input, .form select').forEach(el => {
-        el.addEventListener('input', updateSummary);
-        el.addEventListener('change', updateSummary);
+    })
+    .catch(error => {
+        // Handle errors (if any)
+        let errorMessage = 'An error occurred during registration. Please try again.';
+
+        try {
+            const errorData = JSON.parse(error.message);
+            errorMessage = errorData.message || errorMessage;
+        } catch (e) {
+            // If error message is not JSON formatted, keep the default
+        }
+
+        alert(errorMessage); // Display error message to the user
     });
+}
 
-    function confirmRegistration() {
-            // Show custom modal
-            document.getElementById('customModal').style.display = 'flex';
-            document.getElementById('modalTitle').innerText = "Registration Successful";
-            document.getElementById('modalMessage').innerText = "Your registration details have been submitted successfully.";
-        }
+function resetForm() {
+    document.getElementById("schoolName").value = "";
+    document.getElementById("contact").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("language").value = "";
+    document.getElementById("registrationType").value = "";
+    document.getElementById("frenchOption").value = "no";
+    document.getElementById("nursery").value = "";
+    document.getElementById("kg1").value = "";
+    document.getElementById("kg2").value = "";
+    document.getElementById("basic1").value = "";
+    document.getElementById("basic2").value = "";
+    document.getElementById("basic3").value = "";
+    document.getElementById("basic4").value = "";
+    document.getElementById("basic5").value = "";
+    document.getElementById("basic6").value = "";
+    document.getElementById("basic7").value = "";
+    document.getElementById("basic8").value = "";
+    document.getElementById("basic9").value = "";
+    document.getElementById("mockExamCount").value = "";
+    document.getElementById("summarySection").style.display = "none";
+    showForm();
+}
 
-        function closeModal() {
-            document.getElementById('customModal').style.display = 'none';
-            resetForm();
-        }
-    
-
-    
     </script>
 </body>
 </html>

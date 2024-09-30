@@ -33,6 +33,9 @@ function Signup() {
     .then(data => {
         console.log(data); // Handle the successful response
         alert('Signup successful!'); // Provide feedback to the user
+        
+        // Redirect the user to their profile page after successful signup
+        window.location.href = '/profile.html';  // Adjust the URL to your actual profile page route
     })
     .catch(error => {
         let errorMessage;

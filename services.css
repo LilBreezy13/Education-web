@@ -1623,3 +1623,259 @@ padding: 20px 15px 0;
 
 
 /* ///////////////// OUR SERVICES CSS ///////////////  */
+
+/* Cards Section */
+.cards-section {
+  background-color: #f5f5f5;
+  padding: 50px 20px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  animation: float-in 1s ease-in;
+}
+
+.card-header {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* color: ; */
+}
+
+.price-tab {
+  background-color:  #000aba;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-box {
+  background-color: #f9c64ffe;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.register-btn {
+  background-color:  #000aba;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease-in;
+}
+
+.register-btn:hover {
+  background-color: #e33434;
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+      flex-direction: column;
+  }
+
+  .card {
+      width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes float-in {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+   /* General Reset */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Hero Section Split Layout */
+.hero {
+    display: flex;
+    height: 100vh;
+}
+
+.hero-left, .hero-right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Left Section (Text) */
+.hero-left {
+    background-color: #f0f0f0;
+    text-align: left;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-left h1 {
+    font-size: 3.5em;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-left p {
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.hero-left .cta-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-left .cta-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+}
+
+/* Right Section (Image) */
+.hero-right {
+    background: url('https://via.placeholder.com/800x600') no-repeat center center/cover;
+    /* You can replace the above URL with your desired image link */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-left h1 {
+        font-size: 3em;
+    }
+
+    .hero-left p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-left, .hero-right {
+        width: 100%;
+        height: 50%;
+    }
+
+    .hero-left h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-left p {
+        font-size: 1em;
+    }
+
+    .hero-left .cta-btn {
+        padding: 12px 35px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-left h1 {
+        font-size: 2em;
+    }
+
+    .hero-left p {
+        font-size: 0.9em;
+    }
+
+    .hero-left .cta-btn {
+        padding: 10px 30px;
+        font-size: 0.9em;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* Hero Section */
+ .hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #0b41e1, #eceae9);
+  color: white;
+  padding: 50px 10px;
+  height: 90%;
+}
+
+.hero h1 {
+  font-size: 3em;
+  max-width: 50%;
+}
+
+.hero img {
+  max-width: 500px;
+  height: auto;
+}

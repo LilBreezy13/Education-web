@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./contact.css">
+    <link rel="stylesheet" href="./services.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- 
@@ -181,203 +181,139 @@
 <br>
 <br>
 
-
-<!-- CONTACT US /////////////////////////////  -->   <style>
-        /* Reset some default styles */
-     
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #f0f4f8, #e1e6eb);
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Background image styling */
-        .background {
-            background: url('https://images.unsplash.com/photo-1573497491205-3fce65f3e6e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDg3MjR8MHwxfGFsbHwxfHx8fHx8fHwxNjA4MDI5MTY3&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
-            height: 100vh;
-            z-index: -1;
-            opacity: 0.05; /* Make it barely visible */
-        }
-
-        /* Container for services */
-        .services-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 50px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            margin-top: -50px; /* to prevent overlap with the background */
-        }
-
-        /* Fade-in animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Service card styling */
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            width: 300px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            position: relative;
-            padding: 20px;
-            opacity: 0;
-            animation: slideIn 0.5s forwards;
-            transform: translateY(20px);
-        }
-
-        /* Slide-in animation */
-        @keyframes slideIn {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Title and pricing styling */
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .service-price {
-            font-size: 1.2rem;
-            color: #27ae60;
-            margin-bottom: 10px;
-        }
-
-        /* Button styling */
-        .register-button {
-            background: linear-gradient(to right, #2980b9, #6dd5ed);
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: transform 0.3s ease, background 0.3s ease;
-            font-size: 1rem;
-            width: 100%;
-        }
-
-        .register-button:hover {
-            transform: scale(1.05);
-            background: linear-gradient(to right, #1c5d8e, #4bc6e8);
-        }
-
-        /* Ghana map styling */
-        .map-container {
-            margin: 50px 0;
-            display: flex;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            margin-bottom: 50px;
-        }
-
-        .map {
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsive styling */
-        @media (max-width: 768px) {
-            .services-container {
-                padding: 20px;
-            }
-
-            .service-card {
-                width: 90%;
-            }
-
-            .map {
-                width: 100%;
-            }
-        }
-    </style>
+ <!-- Hero Section -->
+ <div class="hero">
+  <h1>Services</h1>
+  <img src="./assets/images/SERVIVES_PNG-removebg-preview.png" alt="Hero Image">
+</div>
 
 
-    <div class="background"></div>
-    <div class="services-container" id="servicesContainer">
-        <div class="service-card">
-            <h2 class="service-title">Exam Package A</h2>
-            <p class="service-price">$50 per candidate</p>
-            <p>This package includes:</p>
-            <ul>
-                <li>Full Exam Preparation</li>
-                <li>Practice Tests</li>
-                <li>Personalized Feedback</li>
-            </ul>
-            <button class="register-button" onclick="location.href='registration.html'">Register</button>
+<!-- CONTACT US /////////////////////////////  --> 
+  <!-- Cards Section -->
+  <section class="cards-section">
+    <div class="cards-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-header">Terminal Exams For Nursery/KG</div>
+            <div class="price-tab">Price Per Candidate: Gh&#8373;8.00</div>
+            <div class="features">
+                <div class="feature-box">Exams Questions Only</div>
+                <div class="feature-box">No Answer Materials</div> 
+                <div class="feature-box"></div> 
+                <div class="feature-box"></div> 
+                <div class="feature-box"></div> 
+                <div class="feature-box"></div> 
+                <!-- <div class="feature-box">Feature C</div>  -->
+            </div>
+            <a href="./registration.html">
+
+              <button class="register-btn">Register Now</button>
+            </a>
         </div>
-        <div class="service-card">
-            <h2 class="service-title">Exam Package B</h2>
-            <p class="service-price">$75 per candidate</p>
-            <p>This package includes:</p>
-            <ul>
-                <li>Full Exam Preparation</li>
-                <li>Mock Exams</li>
-                <li>Personalized Tutoring</li>
-            </ul>
-            <button class="register-button" onclick="location.href='registration.html'">Register</button>
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-header">Terminal Exams For Basic 1 - 3</div>
+            <div class="price-tab">Price Per Candidate: Gh&#8373;9.00</div>
+            <div class="features">
+                <div class="feature-box">Examination Questions</div>
+                <div class="feature-box">Marking Schemes</div>
+                <div class="feature-box"></div>
+                <div class="feature-box"></div>
+                <div class="feature-box"></div>
+                <div class="feature-box"></div>
+                <!-- <div class="feature-box">Feature C</div> -->
+            </div>
+
+            <a href="./registration.html">
+              <button class="register-btn">Register Now</button>
+            </a>
+
         </div>
-        <div class="service-card">
-            <h2 class="service-title">Exam Package C</h2>
-            <p class="service-price">$100 per candidate</p>
-            <p>This package includes:</p>
-            <ul>
-                <li>Full Exam Preparation</li>
-                <li>Practice Tests</li>
-                <li>Post-Exam Support</li>
-            </ul>
-            <button class="register-button" onclick="location.href='registration.html'">Register</button>
+
+         <div class="card">
+            <div class="card-header">Terminal Exams For Basic 4 - 6</div>
+            <div class="price-tab">Price Per Candidate: Gh&#8373;10.00</div>
+            <div class="features">
+                <div class="feature-box">Examination Questions</div>
+                <div class="feature-box">Marking Schemes</div>
+                <div class="feature-box">Answer Booklets</div>
+                <div class="feature-box">Shading Sheets</div>
+               
+            </div>
+            <a href="./registration.html">
+              <button class="register-btn">Register Now</button>
+            </a>
         </div>
+
+
+        <div class="card">
+          <div class="card-header">Terminal Exams For Basic 7 & 8 <br> Candidates</div>
+          <div class="price-tab">Price Per Candidate: Gh&#8373;15.00</div>
+          <div class="features">
+            <div class="feature-box">Examination Questions</div>
+            <div class="feature-box">Marking Schemes</div>
+            <div class="feature-box">Answer Booklets</div>
+            <div class="feature-box">Shading Sheets</div>
+            <div class="feature-box">Graph Sheets</div>
+            <div class="feature-box">Drawing Sheets</div>
+            <div class="feature-box"></div>
+            <div class="feature-box"></div>
+            <div class="feature-box"></div> 
+            <div class="feature-box"></div> 
+          </div>
+
+          <a href="./registration.html">
+            <button class="register-btn">Register Now</button>
+          </a>
+
+      </div>
+
+      <div class="card">
+        <div class="card-header">General Mock Questions - For Basic 9 Candidates</div>
+        <div class="price-tab">Price Per Candidate: Gh&#8373;15.00</div>
+        <div class="features">
+          <div class="feature-box">Examination Questions</div>
+          <div class="feature-box">Marking Schemes</div>
+          <div class="feature-box">Answer Booklets</div>
+          <div class="feature-box">Shading Sheets</div>
+          <div class="feature-box">Graph Sheets</div>
+          <div class="feature-box">Drawing Sheets</div>
+          <div class="feature-box"></div>
+          <div class="feature-box"></div>
+          <div class="feature-box"></div>
+          <div class="feature-box"></div>
+        </div>
+
+        <a href="./registration.html">
+          <button class="register-btn">Register Now</button>
+        </a>
+
     </div>
 
-    <!-- Ghana Map Section -->
-    <div class="map-container">
-        <img class="map" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ghana_location_map.svg/2880px-Ghana_location_map.svg.png" alt="Ghana Map">
+    <div class="card">
+      <div class="card-header">Special Package for J.H.S 3 Mock</div>
+      <div class="price-tab">Price Per Candidate: Gh&#8373;60.00</div>
+      <div class="features">
+        <div class="feature-box">Examination Questions</div>
+          <div class="feature-box">Marking Schemes</div>
+          <div class="feature-box">Answer Booklets</div>
+          <div class="feature-box">Shading Sheets</div>
+          <div class="feature-box">Graph Sheets</div>
+          <div class="feature-box">Drawing Sheets</div>
+          <div class="feature-box">Invigilation</div>
+          <div class="feature-box">Marking</div>
+          <div class="feature-box">Individual & school Results</div>
+          <div class="feature-box">Examiners Report</div>
+      </div>
+
+      <a href="./registration.html">
+            <button class="register-btn">Register Now</button>
+          </a>
+  </div>
+        <!-- Repeat for 6 cards in total -->
     </div>
-
-    <script>
-        // Fade in service cards when in viewport
-        window.addEventListener('scroll', () => {
-            const services = document.getElementById('servicesContainer');
-            const { top } = services.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            if (top < windowHeight - 100) {
-                services.style.opacity = 1;
-                const cards = document.querySelectorAll('.service-card');
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = 1;
-                        card.style.transform = 'translateY(0)';
-                    }, index * 100); // stagger the animations
-                });
-            }
-        });
-    </script>
+</section>
+  
 <!-- CONTACT US ENDS /////////////////////////////  -->
 
 
@@ -606,7 +542,7 @@
   -->
     <script src="./assets/js/script.js" defer></script>
     
-    <script src="./contact.js"></script>
+    <script src="./services.js"></script>
 
     <!-- 
     - ionicon link
