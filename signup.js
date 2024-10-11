@@ -23,12 +23,17 @@ function Signup() {
         body: JSON.stringify(payload)
     })
     .then(response => {
-        if (!response.ok) {
-            return response.json().then(errorData => {
-                throw new Error(JSON.stringify(errorData));
-            });
-        }
-        return response.json();
+        return response.json().then(data => {
+            if (!response.ok) {
+                // If the response is not ok, throw an error with the error message
+                throw new Error(data.resp_desc || 'An unknown error occurred. Please try again.');
+            }
+            // If the response is ok, save the token to local storage
+            const token = data.data; // Assuming 'data' contains the token
+            localStorage.setItem("apiToken", token);
+            console.log("Token saved:", token); // Log token for verification
+            return data; // Return the data for further handling
+        });
     })
     .then(data => {
         console.log(data); // Handle the successful response
@@ -38,16 +43,7 @@ function Signup() {
         window.location.href = '/profile.html';  // Adjust the URL to your actual profile page route
     })
     .catch(error => {
-        let errorMessage;
-        
-        try {
-            const errorData = JSON.parse(error.message);
-            errorMessage = errorData.resp_desc || 'An unknown error occurred. Please try again.';
-        } catch (e) {
-            errorMessage = error.message || 'An unknown error occurred. Please try again.';
-        }
-
-        console.log('Fetch failed:', errorMessage);
-        alert(errorMessage); // Display the same alert on both mobile and desktop
+        console.error('Fetch failed:', error.message);
+        alert(error.message); // Display the same alert on both mobile and desktop
     });
 }

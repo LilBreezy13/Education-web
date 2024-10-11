@@ -92,3 +92,7 @@ function displayNews(articles) {
 
 // Fetch and display the latest news when the page loads
 window.addEventListener("load", fetchLatestNews);
+
+
+
+

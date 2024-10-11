@@ -6,292 +6,380 @@
   <title>Quiz Portal</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #f0f0f5;
+      color: #2c3e50;
     }
+
     .breadcrumb {
-      padding: 10px 15px;
-      background-color: #e9ecef;
-      border-bottom: 1px solid #ccc;
+      padding: 10px 20px;
+      background-color: #000aba;
+      color: white;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+
     .breadcrumb a {
       text-decoration: none;
-      color: #007bff;
+      color: white;
+      margin-right: 10px;
     }
-    .breadcrumb span {
-      margin: 0 5px;
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
     }
+
+    .progress-bar {
+      height: 5px;
+      background-color: #28a745;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
     .container {
-      padding: 20px;
+      padding: 30px;
       max-width: 800px;
       margin: auto;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+
     h2 {
-      color: #333;
+      color: #34495e;
       text-align: center;
+      font-weight: 600;
+      margin-bottom: 30px;
     }
+
     .subject-card {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
+
     .card {
       width: 48%;
       background-color: #007bff;
       color: white;
-      padding: 15px;
-      margin-bottom: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
       text-align: center;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
     }
+
     .card:hover {
       background-color: #0056b3;
     }
+
     .quiz-area {
       display: none;
     }
+
     .question {
       margin-bottom: 20px;
-      border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 5px;
-      background-color: #fafafa;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f8f9fa;
+      border: 1px solid #e3e3e3;
     }
+
     .question h4 {
       margin: 0;
-      font-size: 16px;
-      color: #333;
+      font-size: 18px;
+      color: #34495e;
     }
+
     .options label {
       display: block;
-      margin-bottom: 10px;
+      margin: 10px 0;
+      cursor: pointer;
     }
+
     .options input {
       margin-right: 10px;
     }
+
     .timer {
       text-align: right;
       font-weight: bold;
       margin-bottom: 20px;
-      color: #dc3545;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      color: #dc3545;
     }
+
     .timer i {
       margin-right: 5px;
       color: #dc3545;
     }
+
+
+    
+    #timer {
+    position: fixed; /* Fixes the timer in place */
+    top: 5%; /* Position it at the center vertically */
+    left: 50%; /* Position it at the center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to truly center it */
+    background-color: #fff; /* Background color */
+    color: red; /* Text color for better visibility */
+    padding: 10px; /* Adds some padding around the timer */
+    width: 50%;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 18px; /* Increase font size for visibility */
+    z-index: 1000; /* Ensure it's above other elements */
+    text-align: center; /* Center the text */
+  }
+
+
     .submit-btn, .home-btn {
-      display: block;
       width: 100%;
-      background-color: #28a745;
+      background-color: #000aba;
       color: white;
-      padding: 10px;
+      padding: 15px;
       border: none;
       cursor: pointer;
-      text-align: center;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 16px;
       margin-top: 10px;
+      transition: background-color 0.3s ease;
     }
+
     .submit-btn:hover, .home-btn:hover {
       background-color: #218838;
     }
+
     .result {
       display: none;
-      margin-top: 20px;
+      margin-top: 30px;
     }
+
     .result p {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
+
     .result .correct {
       color: #28a745;
     }
+
     .result .incorrect {
       color: #dc3545;
     }
+
     .result .answer {
       font-weight: bold;
     }
+
     .well-done {
       display: none;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 30px;
     }
+
     .well-done h3 {
       color: #28a745;
     }
+
     @media (max-width: 768px) {
       .card {
         width: 100%;
       }
     }
-  </style>
-</head>
-<body>
+</style>
 
-  <!-- Breadcrumb navigation -->
-  <div class="breadcrumb">
-    <a href="#">Home</a> <span>&gt;</span> <a href="#">Quiz Portal</a>
+<!-- Breadcrumb navigation -->
+<div class="breadcrumb">
+  <div>
+    <a href="#" onclick="goHome()">Home</a> <span>&gt;</span> <a href="#">Quiz Portal</a>
+  </div>
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<div class="container">
+  <h2 id="subject-header">Select a Subject</h2>
+  <div class="subject-card">
+    <div class="card" onclick="loadQuiz('mathematics')">Mathematics</div>
+    <div class="card" onclick="loadQuiz('science')">Integrated Science</div>
+    <div class="card" onclick="loadQuiz('social')">Social Studies</div>
+    <div class="card" onclick="loadQuiz('english')">English Language</div>
   </div>
 
-  <div class="container">
-    <h2 id="subject-header">Select a Subject</h2>
-    <div class="subject-card">
-      <div class="card" onclick="loadQuiz('mathematics')">Mathematics</div>
-      <div class="card" onclick="loadQuiz('science')">Integrated Science</div>
-      <div class="card" onclick="loadQuiz('social')">Social Studies</div>
-      <div class="card" onclick="loadQuiz('english')">English Language</div>
+  <!-- Quiz Area -->
+  <div class="quiz-area" id="quiz-area">
+    <div class="timer" id="timer">
+      <i class="icon-clock">&#9200;</i> Time Left: 20:00
     </div>
-
-    <!-- Quiz Area -->
-    <div class="quiz-area" id="quiz-area">
-      <div class="timer" id="timer">
-        <i class="icon-clock">&#9200;</i> Time Left: 20:00
-      </div>
-      <form id="quiz-form">
-        <!-- Questions will be dynamically loaded here -->
-      </form>
-      <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
-    </div>
-
-    <!-- Result Area -->
-    <div class="result" id="result-area">
-      <h3>Your Score:</h3>
-      <p id="score"></p>
-      <h4>Corrections:</h4>
-      <div id="corrections"></div>
-      <button class="home-btn" onclick="goHome()">Home</button>
-    </div>
-
-    <!-- Well Done Message -->
-    <div class="well-done" id="well-done">
-      <h3>Congratulations! You answered all questions correctly!</h3>
-      <button class="home-btn" onclick="goHome()">Home</button>
-    </div>
+    <form id="quiz-form">
+      <!-- Questions will be dynamically loaded here -->
+    </form>
+    <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
   </div>
 
-  <script>
-    let timer;
-    let timeRemaining = 1200; // 20 minutes
-    let selectedSubject = '';
-    let quizStarted = false;
-    let questions = {
-      mathematics: [
-        { q: "What is 2 + 2?", options: ["A. 3", "B. 4", "C. 5", "D. 6"], answer: "B", explanation: "B (4 is the sum of 2 and 2)." },
-        { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
-      ],
-      science: [
-        { q: "Which of the following substances is not an element?", options: ["A. Aluminum", "B. Ammonia", "C. Oxygen", "D. Sodium"], answer: "B", explanation: "B (Ammonia (NH₃) is a compound made up of nitrogen (N) and hydrogen (H))." },
-        { q: "Which of the following is the chemical formula of water?", options: ["A. H2", "B. O2", "C. H2O", "D. CO2"], answer: "C", explanation: "C (Water is H2O)." },
-      ],
-      social: [
-        { q: "Who was the first president of the USA?", options: ["A. Abraham Lincoln", "B. George Washington", "C. John Adams", "D. Thomas Jefferson"], answer: "B", explanation: "B (George Washington was the first president of the USA)." },
-        { q: "What year did World War I start?", options: ["A. 1914", "B. 1915", "C. 1916", "D. 1917"], answer: "A", explanation: "A (World War I began in 1914)." },
-      ],
-      english: [
-        { q: "What is the antonym of 'happy'?", options: ["A. Sad", "B. Angry", "C. Excited", "D. Calm"], answer: "A", explanation: "'Sad' is the opposite of 'happy'." },
-        { q: "Choose the correct spelling", options: ["A. Recieve", "B. Receive", "C. Receeve", "D. Receeve"], answer: "B", explanation: "B (The correct spelling is 'receive')." },
-      ]
-    };
+  <!-- Result Area -->
+  <div class="result" id="result-area">
+    <h3>Your Score:</h3>
+    <p id="score"></p>
+    <h4>Corrections:</h4>
+    <div id="corrections"></div>
+    <button class="home-btn" onclick="goHome()">Home</button>
+  </div>
 
-    function loadQuiz(subject) {
-      resetQuiz(); // Reset the quiz before loading new questions
-      selectedSubject = subject;
-      document.querySelector('.subject-card').style.display = 'none'; // Hide subject selection
-      document.getElementById('subject-header').style.display = 'none'; // Hide "Select a Subject" header
-      const quizForm = document.getElementById('quiz-form');
-      quizForm.innerHTML = ''; // Clear previous questions
-      const selectedQuestions = questions[subject].sort(() => 0.5 - Math.random()).slice(0, 20);
-      
-      selectedQuestions.forEach((item, index) => {
-        const questionHTML = 
-          `<div class="question">
-            <h4>Q${index + 1}. ${item.q}</h4>
-            <div class="options">
-              <label><input type="radio" name="q${index}" value="A"> ${item.options[0]}</label>
-              <label><input type="radio" name="q${index}" value="B"> ${item.options[1]}</label>
-              <label><input type="radio" name="q${index}" value="C"> ${item.options[2]}</label>
-              <label><input type="radio" name="q${index}" value="D"> ${item.options[3]}</label>
-            </div>
-          </div>`;
-        quizForm.innerHTML += questionHTML;
-      });
-      
-      document.getElementById('quiz-area').style.display = 'block';
-      startTimer();
-    }
+  <!-- Well Done Message -->
+  <div class="well-done" id="well-done">
+    <h3>Congratulations! You answered all questions correctly!</h3>
+    <button class="home-btn" onclick="goHome()">Home</button>
+  </div>
+</div>
+<script>
+  let timer;
+  let timeRemaining = 1200; // 20 minutes
+  let selectedSubject = '';
+  const questionsPerQuiz = 20;
+  let questions = {
+    mathematics: [
+      { q: "What is 2 + 2?", options: ["A. 3", "B. 4", "C. 5", "D. 6"], answer: "B", explanation: "B (4 is the sum of 2 and 2)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+      { q: "What is 5 * 5?", options: ["A. 20", "B. 30", "C. 25", "D. 35"], answer: "C", explanation: "C (5 multiplied by 5 equals 25)." },
+    ],
+    science: [  // Lowercase "science"
+      { q: "What is H2O?", options: ["A. Oxygen", "B. Hydrogen", "C. Water", "D. Carbon"], answer: "C", explanation: "C (H2O is the chemical formula for water)." },
+      { q: "What is the chemical symbol for Sodium?", options: ["A. Na", "B. S", "C. Cl", "D. O"], answer: "A", explanation: "A (Na is the chemical symbol for Sodium)." },
+    ],
+    // Add more subjects as needed...
+  };
 
-    function startTimer() {
-      timeRemaining = 1200; // Reset to 20 minutes
-      clearInterval(timer); // Clear previous timer (if any)
-      timer = setInterval(() => {
-        timeRemaining--;
-        const minutes = Math.floor(timeRemaining / 60);
-        const seconds = timeRemaining % 60;
-        document.getElementById('timer').innerHTML = `<i class="icon-clock">&#9200;</i> Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        if (timeRemaining <= 0) {
-          clearInterval(timer);
-          submitQuiz(); // Auto-submit quiz when time runs out
-        }
-      }, 1000);
-    }
-
-    function submitQuiz() {
-      clearInterval(timer); // Stop the timer
-      const quizForm = document.getElementById('quiz-form');
-      const formData = new FormData(quizForm);
-      let score = 0;
-      let corrections = '';
-      let allCorrect = true;
-
-      const selectedQuestions = questions[selectedSubject].slice(0, 20);
-      selectedQuestions.forEach((item, index) => {
-        const userAnswer = formData.get(`q${index}`);
-        if (userAnswer === item.answer) {
-          score++;
-          corrections += `<p>Q${index + 1}: <span class="correct">Correct</span>. <span class="answer">${item.answer}</span> (${item.explanation})</p>`;
-        } else {
-          allCorrect = false;
-          corrections += `<p>Q${index + 1}: <span class="incorrect">Wrong</span>. Correct answer is <span class="answer">${item.answer}</span> (${item.explanation})</p>`;
-        }
-      });
-
-      // Show result
-      document.getElementById('score').innerText = `${score}/20`;
-      document.getElementById('corrections').innerHTML = corrections;
-      document.getElementById('quiz-area').style.display = 'none';
-      document.getElementById('result-area').style.display = 'block';
-
-      if (allCorrect) {
-        document.getElementById('result-area').style.display = 'none';
-        document.getElementById('well-done').style.display = 'block';
+  // Function to reset and start the timer
+  function startTimer() {
+    clearInterval(timer); // Ensure no previous timer is running
+    timeRemaining = 1200; // Reset time to 20 minutes
+    timer = setInterval(() => {
+      timeRemaining--;
+      const minutes = Math.floor(timeRemaining / 60);
+      const seconds = timeRemaining % 60;
+      document.getElementById('timer').innerHTML = `<i class="icon-clock">&#9200;</i> Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      if (timeRemaining <= 0) {
+        clearInterval(timer);
+        submitQuiz(); // Auto-submit when time runs out
       }
-    }
+    }, 1000);
+  }
 
-    function goHome() {
-      document.querySelector('.subject-card').style.display = 'flex'; // Show subject selection
-      document.getElementById('subject-header').style.display = 'block'; // Show the "Select a Subject" header
-      document.getElementById('quiz-area').style.display = 'none';
+  // Load quiz for the selected subject
+  function loadQuiz(subject) {
+    resetQuiz(); // Reset quiz and timer when new subject is selected
+    selectedSubject = subject.toLowerCase(); // Ensure subject key is lowercase
+    document.querySelector('.subject-card').style.display = 'none';
+    document.getElementById('subject-header').style.display = 'none';
+
+    const quizForm = document.getElementById('quiz-form');
+    quizForm.innerHTML = '';
+    const selectedQuestions = questions[selectedSubject].slice(0, questionsPerQuiz);
+
+    selectedQuestions.forEach((item, index) => {
+      const questionHTML = 
+        `<div class="question">
+          <h4>Q${index + 1}. ${item.q}</h4>
+          <div class="options">
+            <label><input type="radio" name="q${index}" value="A"> ${item.options[0]}</label>
+            <label><input type="radio" name="q${index}" value="B"> ${item.options[1]}</label>
+            <label><input type="radio" name="q${index}" value="C"> ${item.options[2]}</label>
+            <label><input type="radio" name="q${index}" value="D"> ${item.options[3]}</label>
+          </div>
+        </div>`;
+      quizForm.innerHTML += questionHTML;
+    });
+
+    document.getElementById('quiz-area').style.display = 'block';
+    startTimer(); // Start the timer when a subject is selected
+  }
+
+  // Submit the quiz and reset the timer
+  function submitQuiz() {
+    clearInterval(timer); // Stop the timer on quiz submission
+    const quizForm = document.getElementById('quiz-form');
+    const formData = new FormData(quizForm);
+    let score = 0;
+    let corrections = '';
+    let allCorrect = true;
+
+    const selectedQuestions = questions[selectedSubject].slice(0, questionsPerQuiz);
+    selectedQuestions.forEach((item, index) => {
+      const userAnswer = formData.get(`q${index}`);
+      if (userAnswer === item.answer) {
+        score++;
+        corrections += `<p>Q${index + 1}: <span class="correct">Correct</span>. <span class="answer">${item.answer}</span> (${item.explanation})</p>`;
+      } else {
+        allCorrect = false;
+        corrections += `<p>Q${index + 1}: <span class="incorrect">Wrong</span>. Correct answer is <span class="answer">${item.answer}</span> (${item.explanation})</p>`;
+      }
+    });
+
+    document.getElementById('score').innerText = `${score}/${questionsPerQuiz}`;
+    document.getElementById('corrections').innerHTML = corrections;
+    document.getElementById('quiz-area').style.display = 'none';
+    document.getElementById('result-area').style.display = 'block';
+
+    if (allCorrect) {
       document.getElementById('result-area').style.display = 'none';
-      document.getElementById('well-done').style.display = 'none';
-      clearInterval(timer); // Stop the timer when returning to home
+      document.getElementById('well-done').style.display = 'block';
     }
 
-    function resetQuiz() {
-      timeRemaining = 1200; // Reset time
-      quizStarted = false;
-      clearInterval(timer); // Clear any previous timers
-    }
-  </script>
+    updateProgressBar(score / questionsPerQuiz * 100);
+    resetQuiz(); // Reset the quiz and timer after submission
+  }
+
+  // Function to reset the quiz and timer
+  function resetQuiz() {
+    clearInterval(timer); // Clear any active timer
+    timeRemaining = 1200; // Reset the timer to 20 minutes
+    document.getElementById('timer').innerHTML = `<i class="icon-clock">&#9200;</i> Time Left: 20:00`; // Reset timer display
+    currentQuestionIndex = 0;
+    updateProgressBar(0); // Reset progress bar
+    document.getElementById('quiz-form').innerHTML = ''; // Clear quiz form for new questions
+  }
+
+  // Update the progress bar based on quiz performance
+  function updateProgressBar(percentage) {
+    const progressBar = document.getElementById('progress-bar');
+    progressBar.style.width = `${percentage}%`;
+  }
+
+  // Navigate back to the home screen and reset the timer
+  function goHome() {
+    clearInterval(timer); // Stop the timer when returning home
+    resetQuiz(); // Reset quiz when returning to home
+    document.querySelector('.subject-card').style.display = 'flex';
+    document.getElementById('subject-header').style.display = 'block';
+    document.getElementById('quiz-area').style.display = 'none';
+    document.getElementById('result-area').style.display = 'none';
+    document.getElementById('well-done').style.display = 'none';
+  }
+</script>
 
 </body>
 </html>

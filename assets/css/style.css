@@ -1323,7 +1323,7 @@ body {
 
   .navbar-list {
     display: flex;
-    gap: 50px;
+    gap: 40px;
     padding: 0;
   }
 
@@ -1474,3 +1474,4 @@ body {
 
 
 
+/* ////////////testimonies  */

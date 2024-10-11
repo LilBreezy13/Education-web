@@ -198,7 +198,7 @@
       <article>
         <!-- 
         - #HERO
-      -->
+      --> 
 
         <section
           class="section hero has-bg-image"
@@ -231,7 +231,7 @@
             <figure class="hero-banner">
               <div class="img-holder one" style="--width: 270; --height: 300">
                 <img
-                  src="./assets/images/alpha mock.jpg"
+                  src="./assets/images/beta mock.jpg"
                   width="270"
                   height="300"
                   alt="hero banner"
@@ -981,7 +981,7 @@
             <ul class="grid-list">
               <li>
                 <div class="stats-card" style="--color: 170, 75%, 41%">
-                  <h3 class="card-title">60+K</h3>
+                  <h3 class="card-title">60K+</h3>
 
                   <p class="card-text">Student Enrolled for Mock</p>
                 </div>
@@ -1017,6 +1017,10 @@
         <!-- 
         - #BLOG
       -->
+
+
+      <!-- TESTIMONIALS  -->
+
 
        <!-- ///////////// NEWS STARTED  -->
       <section
@@ -1355,231 +1359,242 @@
  
 
    <!-- ////////////////////// ----------POP UP FOR UPCOMING EXAMS START ------------- ///////////////////////////// -->
-  
-  <style>
-
+   <style>
     body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-      /* Popup styling */
-      .popup {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.6);
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-          animation: fadeIn 0.5s;
-      }
-    
-      .popup-content {
-          background-color: white;
-          padding: 30px;
-          border-radius: 15px;
-          width: 90%;
-          max-width: 600px;
-          position: relative;
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-          text-align: center;
-          animation: slideIn 0.5s;
-      }
-    
-      .close {
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          font-size: 24px;
-          cursor: pointer;
-          color: #333;
-      }
-    
-      .popup-image {
-          margin-bottom: 20px;
-      }
-    
-      #eventImage {
-          max-width: 100%;
-          max-height: 200px;
-          display: block;
-          margin: 0 auto;
-          object-fit: cover;
-      }
-    
-      .popup-details {
-          margin-top: 1px;
-      }
-    
-      #examName {
-          font-size: 22px;
-          font-weight: bold;
-          margin-bottom: 10px;
-          color: #000;
-      }
-    
-      .popup-details p {
-          margin: 2px 0;
-          color: #000;
-      }
-    
-      .popup-details i {
-          margin-right: 10px;
-      }
-    
-      .popup-action {
-          margin-top: 19px;
-      }
-    
-    
-      #popupTitle{
-        color: #000;
-      }
-      /* Button styling */
-      .action-btn {
-          display: inline-block;
-          padding: 12px 20px;
-          background-color:   #000aba;
-          color: white;
-          font-size: 18px;
-          font-weight: bold;
-          border: none;
-          border-radius: 25px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-          text-decoration: none;
-      }
-    
-      .action-btn:hover {
-          background-color: #0056b3;
-          box-shadow: 0 3px 7px   #000aba;
-          transform: translateY(-3px);
-      }
-    
-      /* Register section styling */
-      .register-section {
-          display: none;
-      }
-    
-      .register-section i {
-          font-size: 40px;
-          margin-bottom: 10px;
-      }
-    
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-          .popup-content {
-              padding: 20px;
-              border-radius: 10px;
-          }
-    
-          .popup-action {
-              margin-top: 15px;
-          }
-    
-          #examName {
-              font-size: 20px;
-          }
-    
-          .action-btn {
-              font-size: 16px;
-              padding: 10px 18px;
-          }
-      }
-    
-      @keyframes fadeIn {
-          from {
-              opacity: 0;
-          }
-          to {
-              opacity: 1;
-          }
-      }
-    
-      @keyframes slideIn {
-          from {
-              transform: translateY(-20px);
-              opacity: 0;
-          }
-          to {
-              transform: translateY(0);
-              opacity: 1;
-          }
-      }
-    </style>
-    </head>
-    <body>
-    
-    <div id="popup" class="popup">
-      <div class="popup-content">
-          <span class="close" id="closePopup">&times;</span>
-          <h2 id="popupTitle">Upcoming Exams</h2>
-          <br>
-          <div class="popup-image">
-              <img id="eventImage" src="./assets/images/alpha mock.jpg" alt="Event Flyer">
-          </div>
-          <div class="popup-details">
-              <h3 id="examName">Exam Name: Not Set</h3>
-              <p> <span id="examDateDisplay">Date: Not Set</span></p>
-              <p> <span id="examPriceDisplay">Price: Not Set</span></p>
-              <p></i> <span id="examDescriptionDisplay">Description: Not Set</span></p>
-          </div>
-          <div id="popupAction" class="popup-action">
-              <button id="dontMissOut" class="action-btn"><i class="fas fa-sad-tear"></i> Don't Miss Out</button>
-              <div id="registerSection" class="register-section">
-                  <!-- <i id="registerIcon" </i> -->
-                  <!-- <p>Click below to register!</p> -->
-                  <a id="registerNow" href="./registration.html" class="action-btn"></i> Register Now</a>
-              </div>
-          </div>
-      </div>
-    </div>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-          const popup = document.getElementById('popup');
-          const closePopupButton = document.getElementById('closePopup');
-          const dontMissOutButton = document.getElementById('dontMissOut');
-          const registerSection = document.getElementById('registerSection');
-          
-          const examDetails = {
-              name: 'Alpha Mock Exam',
-              date: '2024-09-30',
-              price: 'GH₵20.00 per candidate',
-              description: 'Based exclusively on Basic 7 curriculum.'
-          };
-    
-          // Set exam details in the popup
-          document.getElementById('popupTitle').textContent = `Upcoming Event: ${examDetails.name}`;
-          document.getElementById('examName').textContent = `Exam Name: ${examDetails.name}`;
-          document.getElementById('examDateDisplay').textContent = `Date: ${examDetails.date}`;
-          document.getElementById('examPriceDisplay').textContent = `Price: ${examDetails.price}`;
-          document.getElementById('examDescriptionDisplay').textContent = `Description: ${examDetails.description}`;
-    
-          // Show popup after one minute, stop it until refresh
-          setTimeout(() => {
-              popup.style.display = 'flex';
-          }, 3000);
-    
-          // Close the popup when clicking the close button
-          closePopupButton.addEventListener('click', () => {
-              popup.style.display = 'none';
-          });
-    
-          // On "Don't Miss Out" click, show "Register Now"
-          dontMissOutButton.addEventListener('click', () => {
-              dontMissOutButton.style.display = 'none';
-              registerSection.style.display = 'block';
-          });
-      });
-    </script>
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
+    /* Popup styling */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.5s;
+    }
+
+    .popup-content {
+        background-color: white;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        max-width: 1200px; /* Adjust max-width for larger screens */
+        height: 80%; /* Set a height for the popup */
+        overflow: hidden; /* Hide overflow */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        position: relative; /* Allow positioning of close button */
+    }
+
+    .left-panel {
+        flex: 1; /* Take up equal space on the left */
+        padding: 20px;
+        text-align: center;
+        background-color:  #000aba; /* Light blue background */
+    }
+
+    .right-panel {
+        flex: 1; /* Take up equal space on the right */
+        padding: 20px;
+        background-color: #f9f9f9; /* Slight background color for distinction */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .close {
+        position: absolute;
+        top: 19px;
+        right: 15px;
+        font-size: 33px;
+        cursor: pointer;
+        color:  #000aba;
+    }
+
+    .popup-image {
+        margin: 0 auto; /* Center the image */
+    }
+
+    #eventImage {
+        max-width: 100%; /* Adjust size for better fit */
+        max-height: 400px; /* Adjust height */
+        object-fit: cover;
+        border-radius: 10px; /* Rounded corners for the image */
+        /* padding: 10%; */
+        margin: 10%;
+    }
+
+    .popup-details {
+        margin-top: 15px;
+        text-align: left; /* Align text to the left */
+    }
+
+    #examName {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #000;
+    }
+
+    .popup-details p {
+        margin: 2px 0;
+        color: #000;
+    }
+
+    .popup-action {
+        margin-top: 20px;
+    }
+
+    #popupTitle {
+        color:  #000aba;
+    }
+
+    /* Button styling */
+    .action-btn {
+        padding: 12px 20px;
+        background-color: #000aba;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        text-decoration: none;
+        margin-top: 10px; /* Add margin for spacing */
+    }
+
+    .action-btn:hover {
+        background-color: #0056b3;
+        box-shadow: 0 3px 7px #000aba;
+        transform: translateY(-3px);
+    }
+
+    /* Register section styling */
+    .register-section {
+        display: none;
+    }
+
+    .register-section i {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .popup-content {
+            flex-direction: column; /* Stack left and right panels */
+            height: auto; /* Allow auto height for mobile */
+        }
+
+        .left-panel,
+        .right-panel {
+            width: 100%; /* Full width for both panels */
+            padding: 10px; /* Reduced padding for mobile */
+        }
+
+        .popup-action {
+            margin-top: 15px;
+        }
+
+        #examName {
+            font-size: 20px;
+        }
+
+        .action-btn {
+            font-size: 16px;
+            padding: 10px 18px;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div id="popup" class="popup">
+<div class="popup-content">
+    <span class="close" id="closePopup">&times;</span>
+    <div class="left-panel">
+        <div class="popup-image">
+            <img id="eventImage" src="./assets/images/beta mock.jpg" alt="Event Flyer">
+        </div>
+    </div>
+    <div class="right-panel">
+        <h2 id="popupTitle">UPCOMING EXAMS</h2>
+        <div class="popup-details">
+            <h3 id="examName">Exam Name: Not Set</h3>
+            <p><span id="examDateDisplay">Date: Not Set</span></p>
+            <p><span id="examPriceDisplay">Price: Not Set</span></p>
+            <p><span id="examDescriptionDisplay">Description: Not Set</span></p>
+        </div>
+        <div id="popupAction" class="popup-action">
+            <button id="dontMissOut" class="action-btn"><i class="fas fa-sad-tear"></i> Don't Miss Out</button>
+            <div id="registerSection" class="register-section">
+                <p>Click below to register!</p>
+                <a id="registerNow" href="./registration.html" class="action-btn">Register Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const popup = document.getElementById('popup');
+const closePopupButton = document.getElementById('closePopup');
+const dontMissOutButton = document.getElementById('dontMissOut');
+const registerSection = document.getElementById('registerSection');
+
+const examDetails = {
+    name: 'Beta Mock Exam',
+    date: '2024-10-28',
+    price: 'GH₵20.00 per candidate',
+    description: 'Based exclusively on Basic 8 curriculum.'
+};
+
+// Set exam details in the popup
+document.getElementById('popupTitle').textContent = `Upcoming Event: ${examDetails.name}`;
+document.getElementById('examName').textContent = `Exam Name: ${examDetails.name}`;
+document.getElementById('examDateDisplay').textContent = `Date: ${examDetails.date}`;
+document.getElementById('examPriceDisplay').textContent = `Price: ${examDetails.price}`;
+document.getElementById('examDescriptionDisplay').textContent = `Description: ${examDetails.description}`;
+
+// Show popup after three seconds
+setTimeout(() => {
+    popup.style.display = 'flex';
+}, 2000);
+
+// Close the popup when clicking the close button
+closePopupButton.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+// On "Don't Miss Out" click, show "Register Now"
+dontMissOutButton.addEventListener('click', () => {
+    dontMissOutButton.style.display = 'none';
+    registerSection.style.display = 'block';
+});
+});
+</script>
 
 <!-- ////////////////////// ----------POP UP FOR UPCOMING EXAMS ENDS ------------- ///////////////////////////// -->
 

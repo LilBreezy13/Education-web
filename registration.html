@@ -266,7 +266,7 @@
                 <button id="cancelBtn" class="cancel_btn" onclick="resetForm()">Cancel</button>
             </div>
 
-            <button type="button" class="login_btn" onclick="calculateBill()">Register</button>
+            <button type="button" class="login_btn" onclick="confirmRegistration()">Register</button>
         </div>
     </div>
 
@@ -290,33 +290,39 @@
     
 
     <script>
-    
-    function showForm() {
-        const registrationType = document.getElementById("registrationType").value;
-        const terminalCandidates = document.getElementById("terminalCandidates");
-        const mockExamTypes = document.getElementById("mockExamTypes");
-    
-        if (registrationType === "mock") {
-            terminalCandidates.style.display = "none";
-            mockExamTypes.style.display = "block";
-        } else if (registrationType === "terminal") {
-            terminalCandidates.style.display = "block";
-            mockExamTypes.style.display = "none";
-        } else {
-            terminalCandidates.style.display = "none";
-            mockExamTypes.style.display = "none";
-        }
+  function confirmRegistration() {
+    // Gather form data
+    const schoolName = document.getElementById("schoolName").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const location = document.getElementById("location").value.trim();
+    const language = document.getElementById("language").value.trim();
+    const registrationType = document.getElementById("registrationType").value;
+    const frenchOption = document.getElementById("frenchOption").value === "yes"; // boolean value for French
+
+    // Check if required fields are filled
+    if (!schoolName || !contact || !location || !registrationType) {
+        alert("Please fill all the required fields.");
+        return;
     }
-    
-    function updateSummary() {
-        const schoolName = document.getElementById("schoolName").value;
-        const contact = document.getElementById("contact").value;
-        const location = document.getElementById("location").value;
-        const language = document.getElementById("language").value;
-        const registrationType = document.getElementById("registrationType").value;
-        const frenchOption = document.getElementById("frenchOption").value;
-    
-        // Get number of candidates for terminal exams
+
+    // Prepare payload
+    const commonPayload = {
+        school_name: schoolName,
+        contact: contact,
+        location: location,
+        gh_language: language,
+        french: frenchOption
+    };
+
+    let payload = {};
+    let apiUrl = '';
+
+    // Handle mock or terminal registration
+    if (registrationType === "mock") {
+        const mockExamCount = parseInt(document.getElementById("mockExamCount").value) || 0;
+        payload = { ...commonPayload, enrollment: mockExamCount };
+        apiUrl = 'http://localhost:3000/v1/register/mock'; // Mock exam API
+    } else if (registrationType === "terminal") {
         const nursery = parseInt(document.getElementById("nursery").value) || 0;
         const kg1 = parseInt(document.getElementById("kg1").value) || 0;
         const kg2 = parseInt(document.getElementById("kg2").value) || 0;
@@ -328,212 +334,105 @@
         const basic6 = parseInt(document.getElementById("basic6").value) || 0;
         const basic7 = parseInt(document.getElementById("basic7").value) || 0;
         const basic8 = parseInt(document.getElementById("basic8").value) || 0;
-        const basic9 = parseInt(document.getElementById("basic9").value) || 0;
-    
-        // Get number of mock exams
-        const mockExamCount = parseInt(document.getElementById("mockExamCount").value) || 0;
-    
-        // Pricing for terminal exams
-        const preschoolPrice = 8;
-        const lowerPrimaryPrice = 9;
-        const upperPrimaryPrice = 10;
-        const basic7_8Price = 15;
-        const basic9Price = 20;
-        const deliveryFee = 20;
-        const mockPrice = 20;
-    
-        // Calculate totals for terminal exams
-        const preschoolTotal = (nursery + kg1 + kg2) * preschoolPrice;
-        const lowerPrimaryTotal = (basic1 + basic2 + basic3) * lowerPrimaryPrice;
-        const upperPrimaryTotal = (basic4 + basic5 + basic6) * upperPrimaryPrice;
-        const basic7_8Total = (basic7 + basic8) * basic7_8Price;
-        const basic9Total = basic9 * basic9Price;
-        const overallTotal = preschoolTotal + lowerPrimaryTotal + upperPrimaryTotal + basic7_8Total + basic9Total + deliveryFee;
-    
-        // Calculate totals for mock exams
-        const mockTotal = mockExamCount * mockPrice + deliveryFee;
-    
-        const frenchText = frenchOption === "yes" ? " (French)" : "";
-    
-        let summaryText = `
-            School Name: <strong>${schoolName}</strong><br>
-            Location: <strong>${location}</strong><br>
-            Contact: <strong>${contact}</strong><br>
-            Exam Type: <strong>${registrationType.charAt(0).toUpperCase() + registrationType.slice(1)}${frenchText}</strong><br>
-            Language: <strong>${language}</strong><br>
-            <br>
-        `;
-    
-        if (registrationType === "terminal") {
-            summaryText += `
-                Pre School: <strong>${preschoolTotal} GHS</strong><br>
-                Lower Primary: <strong>${lowerPrimaryTotal} GHS</strong><br>
-                Upper Primary: <strong>${upperPrimaryTotal} GHS</strong><br>
-                Basic 7&8: <strong>${basic7_8Total} GHS</strong><br>
-                Basic 9: <strong>${basic9Total} GHS</strong><br>
-                </br>
-                Delivery Fee: <strong>${deliveryFee} GHS</strong><br>
-                Overall Total: <strong>${overallTotal} GHS</strong>
-            `;
-        } else if (registrationType === "mock") {
-            summaryText += `
-                Delivery Fee: <strong>${deliveryFee} GHS</strong><br>
-                Overall Total Bill: <strong>${mockTotal} GHS</strong><br>
-            `;
-        }
-    
-        document.getElementById("summaryText").innerHTML = summaryText;
-    }
-    
-    function calculateBill() {
-        const schoolName = document.getElementById("schoolName").value;
-        const contact = document.getElementById("contact").value;
-        const location = document.getElementById("location").value;
-        const language = document.getElementById("language").value;
-        const registrationType = document.getElementById("registrationType").value;
-        const frenchOption = document.getElementById("frenchOption").value;
-    
-        // Validate inputs
-        const allowedLanguages = [
-            "Asante Twi", "Akwapem Twi", "Fante", "Ga", "Dagbani", "Dangme", "Ewe", 
-            "Nzema", "Gonja", "Kasem", "Dagaare", "Dagbane", "None"
-        ];
-    
-        if (!allowedLanguages.includes(language)) {
-            alert("Please select a valid Ghanaian language.");
-            return;
-        }
-    
-        if (!schoolName || !contact || !location) {
-            alert("Please fill in all required fields.");
-            return;
-        }
-    
-        updateSummary();
-        document.getElementById("summarySection").style.display = "block";
+
+        payload = {
+            ...commonPayload,
+            nursery_enrollment: nursery,
+            kg_enrollment: kg1 + kg2,
+            basic_1_enrollment: basic1,
+            basic_2_enrollment: basic2,
+            basic_3_enrollment: basic3,
+            basic_4_enrollment: basic4,
+            basic_5_enrollment: basic5,
+            basic_6_enrollment: basic6,
+            basic_7_enrollment: basic7,
+            basic_8_enrollment: basic8
+        };
+        apiUrl = 'http://localhost:3000/v1/register/terminal'; // Terminal exam API
+    } else {
+        alert("Please select a valid registration type.");
+        return;
     }
 
-    function validateContact() {
-    const contactInput = document.getElementById('contact');
-    const contactValue = contactInput.value;
+    // Log the payload and API URL for debugging
+    console.log("Payload:", payload);
+    console.log("API URL:", apiUrl);
 
-    // Check if the length is greater than 10
-    if (contactValue.length > 10) {
-        contactInput.value = contactValue.slice(0, 10); // Trim to 10 digits
+    // Get the token from localStorage
+    const apiToken = localStorage.getItem('apiToken');
+
+    // Ensure the token exists before making the request
+    if (!apiToken) {
+        alert("API token is missing. Please log in.");
+        return;
     }
-}
-function confirmRegistration() {
-    // Gather form data
-    const schoolName = document.getElementById("schoolName").value;
-    const contact = document.getElementById("contact").value;
-    const location = document.getElementById("location").value;
-    const language = document.getElementById("language").value;
-    const registrationType = document.getElementById("registrationType").value;
-    const frenchOption = document.getElementById("frenchOption").value;
 
-    // Get number of candidates for terminal exams
-    const nursery = parseInt(document.getElementById("nursery").value) || 0;
-    const kg1 = parseInt(document.getElementById("kg1").value) || 0;
-    const kg2 = parseInt(document.getElementById("kg2").value) || 0;
-    const basic1 = parseInt(document.getElementById("basic1").value) || 0;
-    const basic2 = parseInt(document.getElementById("basic2").value) || 0;
-    const basic3 = parseInt(document.getElementById("basic3").value) || 0;
-    const basic4 = parseInt(document.getElementById("basic4").value) || 0;
-    const basic5 = parseInt(document.getElementById("basic5").value) || 0;
-    const basic6 = parseInt(document.getElementById("basic6").value) || 0;
-    const basic7 = parseInt(document.getElementById("basic7").value) || 0;
-    const basic8 = parseInt(document.getElementById("basic8").value) || 0;
-    const basic9 = parseInt(document.getElementById("basic9").value) || 0;
-
-    // Get number of mock exams
-    const mockExamCount = parseInt(document.getElementById("mockExamCount").value) || 0;
-
-    // Prepare data to send to backend
-    const payload = {
-        school_name: schoolName,
-        contact: contact,
-        location: location,
-        language: language,
-        registration_type: registrationType,
-        french_option: frenchOption,
-        nursery: nursery,
-        kg1: kg1,
-        kg2: kg2,
-        basic1: basic1,
-        basic2: basic2,
-        basic3: basic3,
-        basic4: basic4,
-        basic5: basic5,
-        basic6: basic6,
-        basic7: basic7,
-        basic8: basic8,
-        basic9: basic9,
-        mock_exam_count: mockExamCount
-    };
-
-    // Make a POST request to the Go backend
-    fetch('http://localhost:3000/v1/RegisterMock', {
+    // Send the payload to the backend
+    fetch(apiUrl, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+        headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiToken}` // Add token to headers if your API requires it
         },
         body: JSON.stringify(payload)
     })
     .then(response => {
-        if (!response.ok) {
-            return response.json().then(errorData => {
-                throw new Error(JSON.stringify(errorData));
+        // Check if the content-type is JSON before parsing
+        const contentType = response.headers.get('content-type');
+        
+        if (contentType && contentType.includes('application/json')) {
+            // Response is JSON, parse it
+            return response.json();
+        } else {
+            // If not JSON, return the text response for debugging
+            return response.text().then(text => {
+                console.error("Non-JSON response:", text);
+                throw new Error("Expected JSON response but received: " + text);
             });
         }
-        return response.json();
     })
     .then(data => {
-        // Show success modal
+        console.log("Success:", data);
         document.getElementById('customModal').style.display = 'flex';
         document.getElementById('modalTitle').innerText = "Registration Successful";
         document.getElementById('modalMessage').innerText = "Your registration details have been submitted successfully.";
-
-        // Optionally reset the form after success
         resetForm();
     })
     .catch(error => {
-        // Handle errors (if any)
+        console.error("Error during registration:", error);
         let errorMessage = 'An error occurred during registration. Please try again.';
-
-        try {
-            const errorData = JSON.parse(error.message);
-            errorMessage = errorData.message || errorMessage;
-        } catch (e) {
-            // If error message is not JSON formatted, keep the default
+        if (error.message) {
+            errorMessage = error.message;
         }
-
-        alert(errorMessage); // Display error message to the user
+        alert(errorMessage);
     });
 }
 
-function resetForm() {
-    document.getElementById("schoolName").value = "";
-    document.getElementById("contact").value = "";
-    document.getElementById("location").value = "";
-    document.getElementById("language").value = "";
-    document.getElementById("registrationType").value = "";
-    document.getElementById("frenchOption").value = "no";
-    document.getElementById("nursery").value = "";
-    document.getElementById("kg1").value = "";
-    document.getElementById("kg2").value = "";
-    document.getElementById("basic1").value = "";
-    document.getElementById("basic2").value = "";
-    document.getElementById("basic3").value = "";
-    document.getElementById("basic4").value = "";
-    document.getElementById("basic5").value = "";
-    document.getElementById("basic6").value = "";
-    document.getElementById("basic7").value = "";
-    document.getElementById("basic8").value = "";
-    document.getElementById("basic9").value = "";
-    document.getElementById("mockExamCount").value = "";
-    document.getElementById("summarySection").style.display = "none";
-    showForm();
+function showForm() {
+    const registrationType = document.getElementById("registrationType").value;
+    const terminalCandidates = document.getElementById("terminalCandidates"); // Terminal enrollment section
+    const mockExamTypes = document.getElementById("mockExamTypes"); // Mock enrollment section
+
+    // Show or hide form sections based on the selected registration type
+    if (registrationType === "mock") {
+        terminalCandidates.style.display = "none"; // Hide terminal inputs
+        mockExamTypes.style.display = "block"; // Show mock inputs
+    } else if (registrationType === "terminal") {
+        terminalCandidates.style.display = "block"; // Show terminal inputs
+        mockExamTypes.style.display = "none"; // Hide mock inputs
+    } else {
+        terminalCandidates.style.display = "none"; // Hide both if no valid selection
+        mockExamTypes.style.display = "none";
+    }
 }
+
+// Call showForm when the page loads to ensure the form is in the correct state
+window.onload = function() {
+    showForm();
+};
+
+// Ensure that showForm is triggered when the registration type is changed
+document.getElementById("registrationType").addEventListener("change", showForm);
 
     </script>
 </body>
